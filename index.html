@@ -6546,7 +6546,14 @@ body.cursor-hover #cursor-dot {
             });
         }
 
+        function ensureOverlayCleanup() {
+            cgEl.classList.remove('cg-closing');
+            if (typeof gsap !== 'undefined') gsap.killTweensOf(cgEl);
+            cgSlots.forEach(function(s) { s.el.style.removeProperty('opacity'); s.el.style.removeProperty('transition'); });
+        }
+
         function openCatSelector() {
+            ensureOverlayCleanup();
             pauseBg3D();
             buildCollage();
             catOverlay.classList.add('visible');
@@ -6644,6 +6651,7 @@ body.cursor-hover #cursor-dot {
         }
 
         function openFoodSelector(cardRect, coverImg) {
+            ensureOverlayCleanup();
             pauseBg3D();
             foodEl.classList.add('visible');
             document.body.style.overflow = 'hidden';
@@ -6734,6 +6742,7 @@ body.cursor-hover #cursor-dot {
         })();
 
         function openAksesoariSelector(cardRect, coverImg) {
+            ensureOverlayCleanup();
             pauseBg3D();
             aksesoariEl.classList.add('visible');
             document.body.style.overflow = 'hidden';
@@ -6823,6 +6832,7 @@ body.cursor-hover #cursor-dot {
         })();
 
         function openPetSelector(cardRect, coverImg) {
+            ensureOverlayCleanup();
             pauseBg3D();
             petEl.classList.add('visible');
             document.body.style.overflow = 'hidden';
@@ -6917,6 +6927,7 @@ body.cursor-hover #cursor-dot {
         });
 
         function openVideoSelector() {
+            ensureOverlayCleanup();
             pauseBg3D();
             videoSelEl.classList.add('visible');
             document.body.style.overflow = 'hidden';
@@ -7003,6 +7014,7 @@ body.cursor-hover #cursor-dot {
         }
 
         function openGdSelector() {
+            ensureOverlayCleanup();
             pauseBg3D();
             gdSelEl.classList.add('visible');
             document.body.style.overflow = 'hidden';
@@ -7077,6 +7089,7 @@ body.cursor-hover #cursor-dot {
         }
 
         function openSmSelector() {
+            ensureOverlayCleanup();
             pauseBg3D();
             smSelEl.classList.add('visible');
             document.body.style.overflow = 'hidden';
@@ -7715,18 +7728,24 @@ body.cursor-hover #cursor-dot {
         }
 
         function closeCinemaGallery() {
-            // Pause all videos if in video mode
             if (cgEl.dataset.cgMode === 'video') {
                 cgSlots.forEach(({ vid }) => { if (vid) { vid.pause(); vid.src = ''; } });
                 delete cgEl.dataset.cgMode;
             }
+            if (typeof gsap !== 'undefined') gsap.killTweensOf(cgSlots.map(s => s.el));
+            cgSlots.forEach(s => { s.el.style.removeProperty('opacity'); s.el.style.removeProperty('transition'); });
             cgEl.classList.remove('cg-open');
             cgEl.classList.add('cg-closing');
             document.body.style.overflow = '';
-            cgEl.addEventListener('transitionend', () => {
+            var cgDone = false;
+            function cgFinish() {
+                if (cgDone) return;
+                cgDone = true;
                 cgEl.classList.remove('cg-closing');
                 resumeBg3D();
-            }, { once: true });
+            }
+            cgEl.addEventListener('transitionend', cgFinish, { once: true });
+            setTimeout(cgFinish, 400);
             const lbOv = document.getElementById('lb-overlay'); if (lbOv) lbOv.classList.remove('lb-open');
         }
 
