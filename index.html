@@ -6678,8 +6678,23 @@ body.cursor-hover #cursor-dot {
 
         function ensureOverlayCleanup() {
             cgEl.classList.remove('cg-closing');
-            if (typeof gsap !== 'undefined') gsap.killTweensOf(cgEl);
-            cgSlots.forEach(function(s) { s.el.style.removeProperty('opacity'); s.el.style.removeProperty('transition'); });
+            cgEl.classList.remove('cg-open');
+            if (typeof gsap !== 'undefined') {
+                gsap.killTweensOf(cgEl);
+                gsap.killTweensOf(cgSlots.map(s => s.el));
+            }
+            cgSlots.forEach(function(s) {
+                s.el.style.removeProperty('opacity');
+                s.el.style.removeProperty('transition');
+                s.el.style.removeProperty('transform');
+                if (typeof gsap !== 'undefined') gsap.set(s.el, { clearProps: 'all' });
+            });
+            // Clear all photo overlays that might be stuck
+            document.querySelectorAll('.photo-overlay').forEach(function(ov) {
+                ov.classList.remove('visible');
+            });
+            galOverlay.classList.remove('visible');
+            document.body.style.overflow = '';
         }
 
         function openCatSelector() {
@@ -7395,8 +7410,9 @@ body.cursor-hover #cursor-dot {
             galImg.src = '';
 
             closeCatSelector();
-            await delay(300);
+            await delay(window.innerWidth <= 768 ? 50 : 300);
             galOverlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
 
             const imgs = await loadGalleryImages(cat.folder);
             currentImages = imgs;
@@ -7439,11 +7455,13 @@ body.cursor-hover #cursor-dot {
 
         function backToCategories() {
             galOverlay.classList.remove('visible');
+            var mobDelay = window.innerWidth <= 768 ? 50 : 320;
             setTimeout(() => {
                 buildCollage();
                 catOverlay.classList.add('visible');
+                document.body.style.overflow = 'hidden';
                 setTimeout(animateCardsIn, 60);
-            }, 320);
+            }, mobDelay);
         }
 
         /* ─── IMAGE DISPLAY ─── */
@@ -7839,22 +7857,28 @@ body.cursor-hover #cursor-dot {
             document.body.style.overflow = 'hidden';
             cgEl.classList.remove('cg-closing');
             // Set slots invisible, position them, then fade gallery + slots together
-            cgSlots.forEach(s => { s.el.style.transition = 'none'; s.el.style.opacity = '0'; });
+            var isMob = window.innerWidth <= 768;
+            cgSlots.forEach(s => { s.el.style.transition = 'none'; s.el.style.opacity = isMob ? '' : '0'; });
             cgRender(0);
-            requestAnimationFrame(() => {
+            if (isMob) {
                 cgEl.classList.add('cg-open');
-                setTimeout(() => {
-                    cgSlots.forEach(s => { s.el.style.transition = ''; });
-                    if (typeof gsap !== 'undefined') {
-                        gsap.to(cgSlots.map(s => s.el), { opacity: s => {
-                            const d = Math.abs(cgDist(parseInt(cgSlots.indexOf(cgSlots.find(x=>x.el===s.targets()[0])), 10), cgIdx));
-                            return cgStateForDist(d).opacity;
-                        }, duration: 0.6, ease: 'power2.out', stagger: 0.04 });
-                    } else {
-                        cgSlots.forEach(s => { s.el.style.opacity = ''; });
-                    }
-                }, 350);
-            });
+                cgSlots.forEach(s => { s.el.style.removeProperty('opacity'); s.el.style.removeProperty('transition'); });
+            } else {
+                requestAnimationFrame(() => {
+                    cgEl.classList.add('cg-open');
+                    setTimeout(() => {
+                        cgSlots.forEach(s => { s.el.style.transition = ''; });
+                        if (typeof gsap !== 'undefined') {
+                            gsap.to(cgSlots.map(s => s.el), { opacity: s => {
+                                const d = Math.abs(cgDist(parseInt(cgSlots.indexOf(cgSlots.find(x=>x.el===s.targets()[0])), 10), cgIdx));
+                                return cgStateForDist(d).opacity;
+                            }, duration: 0.6, ease: 'power2.out', stagger: 0.04 });
+                        } else {
+                            cgSlots.forEach(s => { s.el.style.opacity = ''; });
+                        }
+                    }, 350);
+                });
+            }
         }
 
         function closeCinemaGallery() {
@@ -7862,20 +7886,34 @@ body.cursor-hover #cursor-dot {
                 cgSlots.forEach(({ vid }) => { if (vid) { vid.pause(); vid.src = ''; } });
                 delete cgEl.dataset.cgMode;
             }
-            if (typeof gsap !== 'undefined') gsap.killTweensOf(cgSlots.map(s => s.el));
-            cgSlots.forEach(s => { s.el.style.removeProperty('opacity'); s.el.style.removeProperty('transition'); });
+            if (typeof gsap !== 'undefined') {
+                gsap.killTweensOf(cgSlots.map(s => s.el));
+                gsap.killTweensOf(cgEl);
+            }
+            cgSlots.forEach(s => {
+                s.el.style.removeProperty('opacity');
+                s.el.style.removeProperty('transition');
+                s.el.style.removeProperty('transform');
+                if (typeof gsap !== 'undefined') gsap.set(s.el, { clearProps: 'all' });
+            });
             cgEl.classList.remove('cg-open');
-            cgEl.classList.add('cg-closing');
             document.body.style.overflow = '';
-            var cgDone = false;
-            function cgFinish() {
-                if (cgDone) return;
-                cgDone = true;
+            var isMob = window.innerWidth <= 768;
+            if (isMob) {
                 cgEl.classList.remove('cg-closing');
                 resumeBg3D();
+            } else {
+                cgEl.classList.add('cg-closing');
+                var cgDone = false;
+                function cgFinish() {
+                    if (cgDone) return;
+                    cgDone = true;
+                    cgEl.classList.remove('cg-closing');
+                    resumeBg3D();
+                }
+                cgEl.addEventListener('transitionend', cgFinish, { once: true });
+                setTimeout(cgFinish, 400);
             }
-            cgEl.addEventListener('transitionend', cgFinish, { once: true });
-            setTimeout(cgFinish, 400);
             const lbOv = document.getElementById('lb-overlay'); if (lbOv) lbOv.classList.remove('lb-open');
         }
 
