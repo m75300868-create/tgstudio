@@ -2825,10 +2825,11 @@ body.cursor-hover #cursor-dot {
             .cat-card-float { animation: none !important; transform: none !important; }
             .cat-card-inner { transform: none !important; }
             #cat-overlay {
-                justify-content: center !important;
-                align-items: center !important;
-                padding-top: 0 !important;
+                display: block !important;
+                padding-top: 4.5rem !important;
                 overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior: contain !important;
             }
         }
 
