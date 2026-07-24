@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Coverflow Galerija</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #111;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Demo dugme za otvaranje ── */
+.open-btn {
+    padding: 1rem 2.5rem;
+    background: #1792DE;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+}
+.open-btn:hover { opacity: 0.85; }
+
+/* ════════════════════════════════════════════════════════
+   CINEMA GALLERY — 3D COVERFLOW
+   ════════════════════════════════════════════════════════ */
+#cinema-gallery {
+    position: fixed; inset: 0; z-index: 99999;
+    display: flex; flex-direction: column;
+    align-items: center;
+    opacity: 1; pointer-events: none;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.72s cubic-bezier(0.22,1,0.36,1);
+    overflow: hidden;
+    background: #ffffff;
+}
+#cinema-gallery.cg-open {
+    clip-path: circle(200% at var(--cg-origin-x, 50%) var(--cg-origin-y, 50%));
+    pointer-events: all;
+}
+#cinema-gallery.cg-closing {
+    clip-path: circle(0% at var(--cg-origin-x, 50%) var(--cg-origin-y, 50%));
+    pointer-events: none;
+    transition: clip-path 0.5s cubic-bezier(0.4,0,1,1);
+}
+
+/* ── Top bar ── */
+.cg-topbar {
+    position: relative; z-index: 2;
+    width: 100%; display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem 3rem 0;
+    opacity: 0; transform: translateY(-10px);
+    transition: opacity 0.55s ease 0.3s, transform 0.55s cubic-bezier(0.22,1,0.36,1) 0.3s;
+    flex-shrink: 0;
+}
+#cinema-gallery.cg-open .cg-topbar { opacity: 1; transform: none; }
+
+.cg-counter {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.22em; color: rgba(0,0,0,0.3);
+}
+.cg-close-btn {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.52rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 0.52rem 1.1rem;
+    cursor: pointer;
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);
+    transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.cg-close-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.82);
+}
+
+/* ── Coverflow stage ── */
+.cg-stage {
+    position: relative; z-index: 1;
+    width: 100%; flex: 1; min-height: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+}
+.cg-track {
+    position: relative;
+    width: 100%; height: 100%;
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+}
+
+/* ── Svaki slot: jedna slika ── */
+.cg-slot {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: clamp(200px, 28vw, 420px);
+    margin-left: calc(clamp(200px, 28vw, 420px) / -2);
+    display: flex; align-items: center; justify-content: center;
+    will-change: transform, opacity, filter;
+    transition:
+        transform 0.65s cubic-bezier(0.22,1,0.36,1),
+        opacity   0.65s cubic-bezier(0.22,1,0.36,1),
+        filter    0.65s cubic-bezier(0.22,1,0.36,1);
+    cursor: pointer;
+}
+.cg-slot img {
+    width: 100%;
+    height: auto;
+    max-height: 72vh;
+    object-fit: contain;
+    display: block;
+    border-radius: 6px;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ── Magnifier lupa ── */
+.cg-magnifier {
+    position: fixed;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.3);
+    pointer-events: none;
+    z-index: 999999;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.cg-magnifier.cg-mag-active { opacity: 1; transform: scale(1); }
+.cg-magnifier img { position: absolute; pointer-events: none; user-select: none; }
+
+/* ── Float wrapper ── */
+.cg-float-wrap {
+    display: block;
+    will-change: transform;
+}
+#cinema-gallery .cg-slot:hover .cg-float-wrap {
+    animation-play-state: paused;
+}
+@keyframes gallery-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-15px); }
+}
+@media (max-width: 768px) {
+    @keyframes gallery-float {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(0); }
+    }
+}
+
+/* ── Ken Burns na aktivnoj slici ── */
+.cg-slot.cg-active img {
+    animation: cgKenBurns 10s ease forwards;
+}
+@keyframes cgKenBurns {
+    from { transform: scale(1.0); }
+    to   { transform: scale(1.04); }
+}
+
+/* ── Nav dugmad ── */
+.cg-nav-btn {
+    position: absolute; top: 50%; z-index: 10;
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    color: rgba(255,255,255,0.62); font-size: 1.5rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 6px 24px rgba(0,0,0,0.5);
+    transition: all 0.45s cubic-bezier(0.22,1,0.36,1);
+    transform: translateY(-50%);
+}
+.cg-nav-btn:hover {
+    background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+    color: rgba(255,255,255,0.95); transform: translateY(-50%) scale(1.08);
+}
+.cg-nav-btn:disabled { opacity: 0.15; cursor: not-allowed; transform: translateY(-50%) !important; }
+.cg-nav-btn.cg-prev { left: 1.5rem; }
+.cg-nav-btn.cg-next { right: 1.5rem; }
+
+/* ── Dot indikatori ── */
+.cg-bottom {
+    position: relative; z-index: 2;
+    padding: 0.8rem 3rem 1.8rem; flex-shrink: 0;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.55s ease 0.45s, transform 0.55s cubic-bezier(0.22,1,0.36,1) 0.45s;
+}
+#cinema-gallery.cg-open .cg-bottom { opacity: 1; transform: none; }
+.cg-dots { display: flex; gap: 5px; align-items: center; justify-content: center; }
+.cg-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(0,0,0,0.18);
+    transition: all 0.42s cubic-bezier(0.22,1,0.36,1);
+    flex-shrink: 0; cursor: pointer;
+}
+.cg-dot.active { width: 22px; border-radius: 2px; background: rgba(0,0,0,0.55); }
+
+@media (max-width: 1024px) {
+    .cg-slot {
+        width: clamp(180px, 72vw, 360px);
+        margin-left: calc(clamp(180px, 72vw, 360px) / -2);
+    }
+    .cg-slot img { max-height: 60vh; }
+    .cg-nav-btn.cg-prev { left: 0.5rem; }
+    .cg-nav-btn.cg-next { right: 0.5rem; }
+    .cg-topbar { padding: 1.3rem 1.2rem 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Demo dugme -->
+<button class="open-btn" id="open-gallery-btn">Otvori Galeriju</button>
+
+<!-- ════════════════════════════════════════════════════════
+     HTML GALERIJE — ne menjaj strukturu, samo putanje slika
+     ════════════════════════════════════════════════════════ -->
+<div id="cinema-gallery" role="dialog" aria-modal="true" aria-label="Gallery">
+    <div id="cg-backdrop" style="position:absolute;inset:0;z-index:0;background:#ffffff;"></div>
+    <div class="cg-topbar" style="position:relative;z-index:2;">
+        <span class="cg-counter" id="cg-counter">01 / 10</span>
+        <button class="cg-close-btn" id="cg-close">ESC ✕</button>
+    </div>
+    <div class="cg-stage" id="cg-stage">
+        <div class="cg-track" id="cg-track"></div>
+        <button class="cg-nav-btn cg-prev" id="cg-prev">&#8249;</button>
+        <button class="cg-nav-btn cg-next" id="cg-next">&#8250;</button>
+    </div>
+    <div class="cg-bottom">
+        <div class="cg-dots" id="cg-dots"></div>
+    </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════════════
+   PODESI OVO: lista slika koje hoces da prikažeš u galeriji
+   Ubaci putanje do tvojih slika (lokalne ili URL)
+   ════════════════════════════════════════════════════════════════════════ */
+const CG_IMAGES = [
+    'slike/01.jpg',
+    'slike/02.jpg',
+    'slike/03.jpg',
+    'slike/04.jpg',
+    'slike/05.jpg',
+    'slike/06.jpg',
+    'slike/07.jpg',
+    'slike/08.jpg',
+    'slike/09.jpg',
+    'slike/10.jpg',
+];
+
+/* ════════════════════════════════════════════════════════
+   COVERFLOW ENGINE — ne diraj ovo
+   ════════════════════════════════════════════════════════ */
+let CG_TOTAL  = CG_IMAGES.length;
+let cgIdx     = 0;
+let cgTouchX  = 0;
+const cgSlots = [];
+
+const cgEl      = document.getElementById('cinema-gallery');
+const cgTrackEl = document.getElementById('cg-track');
+const cgPrevBtn = document.getElementById('cg-prev');
+const cgNextBtn = document.getElementById('cg-next');
+const cgCloseEl = document.getElementById('cg-close');
+const cgCountEl = document.getElementById('cg-counter');
+const cgDotsEl  = document.getElementById('cg-dots');
+const cgStage   = document.getElementById('cg-stage');
+
+// ── Magnifier lupa ──
+const cgMag = document.createElement('div');
+cgMag.className = 'cg-magnifier';
+cgMag.innerHTML = '<img>';
+document.body.appendChild(cgMag);
+const cgMagImg = cgMag.querySelector('img');
+const CG_MAG_SIZE = 160;
+const CG_MAG_ZOOM = 2;
+
+function cgMagnify(e, srcImg, r) {
+    const mx = e.clientX, my = e.clientY;
+    cgMag.style.left = (mx - CG_MAG_SIZE / 2) + 'px';
+    cgMag.style.top  = (my - CG_MAG_SIZE / 2) + 'px';
+    cgMag.classList.add('cg-mag-active');
+    const px = (mx - r.left) / r.width;
+    const py = (my - r.top)  / r.height;
+    const scaledW = r.width  * CG_MAG_ZOOM;
+    const scaledH = r.height * CG_MAG_ZOOM;
+    const offX = px * scaledW - CG_MAG_SIZE / 2;
+    const offY = py * scaledH - CG_MAG_SIZE / 2;
+    if (cgMagImg.src !== srcImg.src) cgMagImg.src = srcImg.src;
+    cgMagImg.style.cssText = `width:${scaledW}px;height:${scaledH}px;left:${-offX}px;top:${-offY}px;border-radius:0;max-height:none;`;
+}
+function cgMagHide() { cgMag.classList.remove('cg-mag-active'); }
+
+// ── Gradi slotove ──
+function cgBuild() {
+    cgSlots.length = 0;
+    cgTrackEl.innerHTML = '';
+    cgDotsEl.innerHTML  = '';
+    cgIdx = 0;
+
+    const CG_FLOAT_DURS = [4.0, 5.2, 4.6, 5.8, 4.3, 6.0, 4.9, 5.5, 4.1, 5.7];
+
+    CG_IMAGES.forEach((src, i) => {
+        const slot = document.createElement('div');
+        slot.className   = 'cg-slot';
+        slot.dataset.idx = String(i);
+
+        const img = document.createElement('img');
+        img.alt = ''; img.draggable = false;
+        img.src = src;
+
+        // Float wrapper
+        const fw = document.createElement('div');
+        fw.className = 'cg-float-wrap';
+        fw.style.animationName           = 'gallery-float';
+        fw.style.animationDuration       = CG_FLOAT_DURS[i % 10].toFixed(1) + 's';
+        fw.style.animationDelay          = ((i * 0.37) % 2.1).toFixed(2) + 's';
+        fw.style.animationTimingFunction = 'ease-in-out';
+        fw.style.animationIterationCount = 'infinite';
+        fw.style.animationDirection      = 'alternate';
+
+        fw.appendChild(img);
+        slot.appendChild(fw);
+
+        slot.addEventListener('mousemove', e => {
+            if (slot.classList.contains('cg-active')) cgMagnify(e, img, slot.getBoundingClientRect());
+        });
+        slot.addEventListener('mouseleave', cgMagHide);
+        slot.addEventListener('click', () => {
+            const d = cgDist(i, cgIdx);
+            if (d !== 0) { cgRender((cgIdx + d + CG_TOTAL) % CG_TOTAL); return; }
+        });
+
+        cgTrackEl.appendChild(slot);
+        cgSlots.push({ el: slot, img, idx: i });
+    });
+
+    // Dot indikatori
+    for (let i = 0; i < CG_TOTAL; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'cg-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => cgRender(i));
+        cgDotsEl.appendChild(dot);
+    }
+}
+
+// ── Kratka cirkularana udaljenost ──
+function cgDist(imgIdx, activeIdx) {
+    let d = imgIdx - activeIdx;
+    if (d >  CG_TOTAL / 2) d -= CG_TOTAL;
+    if (d < -CG_TOTAL / 2) d += CG_TOTAL;
+    return d;
+}
+
+// ── Transform po udaljenosti od centra ──
+function cgStateForDist(d) {
+    const a = Math.abs(d);
+    const slotW = cgSlots[0]?.el.offsetWidth || 320;
+    const STEP  = slotW * 0.62;
+    return {
+        transform: `translateX(${d * STEP}px) translateY(-50%) rotateY(${d * -22}deg) translateZ(${-a * 65}px) scale(${Math.max(0.38, 1 - a * 0.14)})`,
+        opacity:   a === 0 ? 1 : a === 1 ? 0.65 : a === 2 ? 0.36 : a === 3 ? 0.12 : 0,
+        filter:    a === 0 ? 'blur(0px)' : a === 1 ? 'blur(2px)' : a === 2 ? 'blur(5px)' : 'blur(10px)',
+        zIndex:    String(Math.max(0, 10 - a)),
+        pointer:   a <= 2 ? 'auto' : 'none',
+        isCenter:  d === 0,
+    };
+}
+
+// ── Glavna render funkcija ──
+function cgRender(idx) {
+    cgIdx = ((idx % CG_TOTAL) + CG_TOTAL) % CG_TOTAL;
+    cgCountEl.textContent = `${String(cgIdx + 1).padStart(2, '0')} / ${String(CG_TOTAL).padStart(2, '0')}`;
+    cgPrevBtn.disabled = false;
+    cgNextBtn.disabled = false;
+    cgDotsEl.querySelectorAll('.cg-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === cgIdx));
+
+    cgSlots.forEach(({ el, idx: slotIdx }) => {
+        const d = cgDist(slotIdx, cgIdx);
+        const s = cgStateForDist(d);
+        el.style.transform     = s.transform;
+        el.style.opacity       = String(s.opacity);
+        el.style.filter        = s.filter;
+        el.style.zIndex        = s.zIndex;
+        el.style.pointerEvents = s.pointer;
+
+        if (s.isCenter) {
+            el.classList.remove('cg-active');
+            void el.offsetWidth;
+            el.classList.add('cg-active');
+        } else {
+            el.classList.remove('cg-active');
+        }
+    });
+}
+
+function cgStep(dir) { cgRender((cgIdx + dir + CG_TOTAL) % CG_TOTAL); }
+
+// ── Otvori galeriju ──
+function openCinemaGallery(triggerBtn) {
+    cgBuild();
+    if (triggerBtn) {
+        const rect = triggerBtn.getBoundingClientRect();
+        const ox = ((rect.left + rect.width  / 2) / window.innerWidth  * 100).toFixed(2) + '%';
+        const oy = ((rect.top  + rect.height / 2) / window.innerHeight * 100).toFixed(2) + '%';
+        cgEl.style.setProperty('--cg-origin-x', ox);
+        cgEl.style.setProperty('--cg-origin-y', oy);
+    }
+    document.body.style.overflow = 'hidden';
+    cgEl.classList.remove('cg-closing');
+    cgEl.style.transition = '';
+    requestAnimationFrame(() => {
+        cgEl.classList.add('cg-open');
+        requestAnimationFrame(() => cgRender(0));
+    });
+}
+
+// ── Zatvori galeriju ──
+function closeCinemaGallery() {
+    cgMagHide();
+    cgEl.classList.remove('cg-open');
+    cgEl.classList.add('cg-closing');
+    document.body.style.overflow = '';
+    cgEl.addEventListener('transitionend', () => {
+        cgEl.classList.remove('cg-closing');
+    }, { once: true });
+}
+
+// ── Event listeneri ──
+cgPrevBtn.addEventListener('click', () => cgStep(-1));
+cgNextBtn.addEventListener('click', () => cgStep(1));
+cgCloseEl.addEventListener('click', closeCinemaGallery);
+
+document.addEventListener('keydown', e => {
+    if (!cgEl.classList.contains('cg-open')) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); cgStep(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); cgStep(1); }
+    if (e.key === 'Escape')     closeCinemaGallery();
+});
+
+cgStage.addEventListener('touchstart', e => { cgTouchX = e.touches[0].clientX; }, { passive: true });
+cgStage.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - cgTouchX;
+    if (Math.abs(dx) > 45) cgStep(dx < 0 ? 1 : -1);
+});
+
+// ── Demo dugme ──
+document.getElementById('open-gallery-btn').addEventListener('click', function() {
+    openCinemaGallery(this);
+});
+</script>
+</body>
+</html>
