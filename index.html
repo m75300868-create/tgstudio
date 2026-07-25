@@ -7662,8 +7662,8 @@ body.cursor-hover #cursor-dot {
                 slot.dataset.idx = String(i);
                 const img = document.createElement('img');
                 img.alt = ''; img.draggable = false;
-                img.src = src;
-                img.onerror = () => { img.src = src.replace(/\.webp$/, '.jpg'); img.onerror = null; };
+                img.dataset.cgSrc = src;
+                if (i <= 4) { img.src = src; img.onerror = () => { img.src = src.replace(/\.webp$/, '.jpg'); img.onerror = null; }; }
 
                 // Float wrapper: Ken Burns runs on img, vertical float runs on
                 // the wrapper — separate elements, zero conflict on transform
@@ -7830,8 +7830,21 @@ body.cursor-hover #cursor-dot {
         }
 
         // Core render — recalculates ALL 13 slots simultaneously
+        function cgLazyLoad(centerIdx) {
+            for (let offset = -3; offset <= 3; offset++) {
+                const i = ((centerIdx + offset) % CG_TOTAL + CG_TOTAL) % CG_TOTAL;
+                const s = cgSlots[i];
+                if (s && s.img.dataset && s.img.dataset.cgSrc && !s.img.getAttribute('src')) {
+                    const src = s.img.dataset.cgSrc;
+                    s.img.src = src;
+                    s.img.onerror = () => { s.img.src = src.replace(/\.webp$/, '.jpg'); s.img.onerror = null; };
+                }
+            }
+        }
+
         function cgRender(idx) {
             cgIdx = ((idx % CG_TOTAL) + CG_TOTAL) % CG_TOTAL;
+            cgLazyLoad(cgIdx);
 
             cgCountEl.textContent = `${String(cgIdx + 1).padStart(2, '0')} / ${String(CG_TOTAL).padStart(2, '0')}`;
             // Infinite loop — arrows always enabled
