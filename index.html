@@ -875,7 +875,6 @@ body.cursor-hover #cursor-dot {
             transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-
         /* Glass + reveal: keep GPU layer alive so backdrop-filter never flashes */
         .glass.reveal { opacity: 0.001; }
         .glass.reveal.visible { opacity: 1; }
@@ -936,6 +935,7 @@ body.cursor-hover #cursor-dot {
             flex-direction: column;
             align-items: center;
             gap: 1.8rem;
+        }
         .about-social-row {
             display: flex;
             gap: 0.9rem;
@@ -1114,6 +1114,7 @@ body.cursor-hover #cursor-dot {
             border: none;
             backdrop-filter: none;
             padding: 0;
+        }
 
         .about-intro {
             font-family: var(--font-sans);
@@ -2002,7 +2003,17 @@ body.cursor-hover #cursor-dot {
         /* Why pillars — always visible, no scroll reveal */
         .why-pillar { animation: none; opacity: 1 !important; transform: none !important; }
 
-        /* About section — always visible */
+        /* About section — always visible, no animation */
+        .about-left-col {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
+        .about-text {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
         .about-left-col.about-in { opacity: 1; transform: none; }
         .about-text.about-in     { opacity: 1; transform: none; }
         @media (max-width: 768px) {
@@ -6001,6 +6012,7 @@ body.cursor-hover #cursor-dot {
             el.style.transform = 'none';
             el.style.transition = 'none';
         });
+
 
         // About — sve odmah vidljivo
         (function() {
