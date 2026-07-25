@@ -876,15 +876,6 @@ body.cursor-hover #cursor-dot {
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .sr-hidden {
-            opacity: 0 !important;
-            transform: translateY(32px) !important;
-            transition: opacity 0.85s var(--ease), transform 0.85s var(--ease) !important;
-        }
-        .sr-visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
         /* Glass + reveal: keep GPU layer alive so backdrop-filter never flashes */
         .glass.reveal { opacity: 0.001; }
         .glass.reveal.visible { opacity: 1; }
@@ -945,11 +936,6 @@ body.cursor-hover #cursor-dot {
             flex-direction: column;
             align-items: center;
             gap: 1.8rem;
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
-        }
-        .about-left-col.visible { opacity: 1; transform: translateY(0); }
         .about-social-row {
             display: flex;
             gap: 0.9rem;
@@ -1128,11 +1114,6 @@ body.cursor-hover #cursor-dot {
             border: none;
             backdrop-filter: none;
             padding: 0;
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.85s var(--ease) 0.15s, transform 0.85s var(--ease) 0.15s;
-        }
-        .about-text.visible { opacity: 1; transform: translateY(0); }
 
         .about-intro {
             font-family: var(--font-sans);
@@ -2021,7 +2002,7 @@ body.cursor-hover #cursor-dot {
         /* Why pillars — always visible, no scroll reveal */
         .why-pillar { animation: none; opacity: 1 !important; transform: none !important; }
 
-        /* About section — scroll reveal */
+        /* About section — always visible */
         .about-left-col.about-in { opacity: 1; transform: none; }
         .about-text.about-in     { opacity: 1; transform: none; }
         @media (max-width: 768px) {
@@ -6007,54 +5988,26 @@ body.cursor-hover #cursor-dot {
             });
         });
 
-        // Scroll reveal — fade-in on scroll, once
+        // Scroll reveal — sve odmah vidljivo
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            el.classList.add('visible');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
+        });
+        document.querySelectorAll('.pf-from-left, .pf-from-right').forEach(function(el) {
+            el.classList.add('pf-in');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
+        });
+
+        // About — sve odmah vidljivo
         (function() {
-            if (window.innerWidth <= 768) return;
-
-            var allReveal = [];
-
-            document.querySelectorAll('.page-section').forEach(function(sec) {
-                var inner = sec.querySelector('.section-inner');
-                if (inner) {
-                    inner.classList.add('sr-hidden');
-                    allReveal.push(inner);
-                }
-            });
-
-            document.querySelectorAll('.reveal').forEach(function(el) { allReveal.push(el); });
-            document.querySelectorAll('.about-left-col, .about-text').forEach(function(el) { allReveal.push(el); });
-            document.querySelectorAll('.pf-from-left, .pf-from-right').forEach(function(el) { allReveal.push(el); });
-
-            if (!('IntersectionObserver' in window)) {
-                allReveal.forEach(function(el) {
-                    el.classList.remove('sr-hidden');
-                    el.classList.add('visible');
-                    el.style.opacity = '1';
-                    el.style.transform = 'none';
-                });
-                return;
-            }
-
-            var io = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    if (e.isIntersecting) {
-                        var el = e.target;
-                        if (el.classList.contains('sr-hidden')) {
-                            el.classList.remove('sr-hidden');
-                            el.classList.add('sr-visible');
-                        } else if (el.classList.contains('pf-from-left') || el.classList.contains('pf-from-right')) {
-                            el.classList.add('pf-in');
-                        } else {
-                            el.classList.add('visible');
-                        }
-                        io.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.01 });
-
-            requestAnimationFrame(function() {
-                allReveal.forEach(function(el) { io.observe(el); });
-            });
+            var left  = document.querySelector('.about-left-col');
+            var right = document.querySelector('.about-text');
+            if (left)  { left.style.opacity  = '1'; left.style.transform  = 'none'; left.style.transition  = 'none'; }
+            if (right) { right.style.opacity = '1'; right.style.transform = 'none'; right.style.transition = 'none'; }
         })();
 
 
