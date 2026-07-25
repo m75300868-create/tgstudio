@@ -875,6 +875,16 @@ body.cursor-hover #cursor-dot {
             transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .sr-hidden {
+            opacity: 0 !important;
+            transform: translateY(32px) !important;
+            transition: opacity 0.85s var(--ease), transform 0.85s var(--ease) !important;
+        }
+        .sr-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
         /* Glass + reveal: keep GPU layer alive so backdrop-filter never flashes */
         .glass.reveal { opacity: 0.001; }
         .glass.reveal.visible { opacity: 1; }
@@ -5999,26 +6009,39 @@ body.cursor-hover #cursor-dot {
 
         // Scroll reveal — fade-in on scroll, once
         (function() {
-            document.querySelectorAll('.page-section .section-inner').forEach(function(el) {
-                if (!el.classList.contains('reveal')) {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(32px)';
-                    el.style.transition = 'opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1)';
-                    el.dataset.sectionReveal = '1';
+            if (window.innerWidth <= 768) return;
+
+            var allReveal = [];
+
+            document.querySelectorAll('.page-section').forEach(function(sec) {
+                var inner = sec.querySelector('.section-inner');
+                if (inner) {
+                    inner.classList.add('sr-hidden');
+                    allReveal.push(inner);
                 }
             });
-            var revealEls = document.querySelectorAll('.reveal, .about-left-col, .about-text, .pf-from-left, .pf-from-right, [data-section-reveal]');
+
+            document.querySelectorAll('.reveal').forEach(function(el) { allReveal.push(el); });
+            document.querySelectorAll('.about-left-col, .about-text').forEach(function(el) { allReveal.push(el); });
+            document.querySelectorAll('.pf-from-left, .pf-from-right').forEach(function(el) { allReveal.push(el); });
+
             if (!('IntersectionObserver' in window)) {
-                revealEls.forEach(function(el) { el.classList.add('visible'); el.style.opacity='1'; el.style.transform='none'; });
+                allReveal.forEach(function(el) {
+                    el.classList.remove('sr-hidden');
+                    el.classList.add('visible');
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
                 return;
             }
+
             var io = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) {
                         var el = e.target;
-                        if (el.dataset.sectionReveal) {
-                            el.style.opacity = '1';
-                            el.style.transform = 'translateY(0)';
+                        if (el.classList.contains('sr-hidden')) {
+                            el.classList.remove('sr-hidden');
+                            el.classList.add('sr-visible');
                         } else if (el.classList.contains('pf-from-left') || el.classList.contains('pf-from-right')) {
                             el.classList.add('pf-in');
                         } else {
@@ -6027,8 +6050,11 @@ body.cursor-hover #cursor-dot {
                         io.unobserve(el);
                     }
                 });
-            }, { threshold: 0.15 });
-            revealEls.forEach(function(el) { io.observe(el); });
+            }, { threshold: 0.01 });
+
+            requestAnimationFrame(function() {
+                allReveal.forEach(function(el) { io.observe(el); });
+            });
         })();
 
 
