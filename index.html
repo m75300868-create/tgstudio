@@ -935,7 +935,11 @@ body.cursor-hover #cursor-dot {
             flex-direction: column;
             align-items: center;
             gap: 1.8rem;
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
         }
+        .about-left-col.visible { opacity: 1; transform: translateY(0); }
         .about-social-row {
             display: flex;
             gap: 0.9rem;
@@ -1114,7 +1118,11 @@ body.cursor-hover #cursor-dot {
             border: none;
             backdrop-filter: none;
             padding: 0;
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s var(--ease) 0.15s, transform 0.85s var(--ease) 0.15s;
         }
+        .about-text.visible { opacity: 1; transform: translateY(0); }
 
         .about-intro {
             font-family: var(--font-sans);
@@ -2003,17 +2011,7 @@ body.cursor-hover #cursor-dot {
         /* Why pillars — always visible, no scroll reveal */
         .why-pillar { animation: none; opacity: 1 !important; transform: none !important; }
 
-        /* About section — always visible, no animation */
-        .about-left-col {
-            opacity: 1 !important;
-            transform: none !important;
-            transition: none !important;
-        }
-        .about-text {
-            opacity: 1 !important;
-            transform: none !important;
-            transition: none !important;
-        }
+        /* About section — scroll reveal */
         .about-left-col.about-in { opacity: 1; transform: none; }
         .about-text.about-in     { opacity: 1; transform: none; }
         @media (max-width: 768px) {
@@ -5999,27 +5997,38 @@ body.cursor-hover #cursor-dot {
             });
         });
 
-        // Scroll reveal — sve odmah vidljivo
-        document.querySelectorAll('.reveal').forEach(function(el) {
-            el.classList.add('visible');
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-            el.style.transition = 'none';
-        });
-        document.querySelectorAll('.pf-from-left, .pf-from-right').forEach(function(el) {
-            el.classList.add('pf-in');
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-            el.style.transition = 'none';
-        });
-
-
-        // About — sve odmah vidljivo
+        // Scroll reveal — fade-in on scroll, once
         (function() {
-            var left  = document.querySelector('.about-left-col');
-            var right = document.querySelector('.about-text');
-            if (left)  { left.style.opacity  = '1'; left.style.transform  = 'none'; left.style.transition  = 'none'; }
-            if (right) { right.style.opacity = '1'; right.style.transform = 'none'; right.style.transition = 'none'; }
+            document.querySelectorAll('.page-section .section-inner').forEach(function(el) {
+                if (!el.classList.contains('reveal')) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(32px)';
+                    el.style.transition = 'opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1)';
+                    el.dataset.sectionReveal = '1';
+                }
+            });
+            var revealEls = document.querySelectorAll('.reveal, .about-left-col, .about-text, .pf-from-left, .pf-from-right, [data-section-reveal]');
+            if (!('IntersectionObserver' in window)) {
+                revealEls.forEach(function(el) { el.classList.add('visible'); el.style.opacity='1'; el.style.transform='none'; });
+                return;
+            }
+            var io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        var el = e.target;
+                        if (el.dataset.sectionReveal) {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        } else if (el.classList.contains('pf-from-left') || el.classList.contains('pf-from-right')) {
+                            el.classList.add('pf-in');
+                        } else {
+                            el.classList.add('visible');
+                        }
+                        io.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(function(el) { io.observe(el); });
         })();
 
 
