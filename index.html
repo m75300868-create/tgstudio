@@ -7170,11 +7170,11 @@ body.cursor-hover #cursor-dot {
         /* ─── GRAPHIC DESIGN SELECTOR ─── */
         const GD_SUBS = [
             { sr: 'Logoi', en: 'Logos', i18n: 'gdLogos', folder: 'graficki-dizajn/logo', total: 5, cover: 'graficki-dizajn/logo/cover.webp', cx: 18, cy: 28, w: 'clamp(190px,18vw,260px)', fa: 'none', fd: '0s', fdy: '0s', z: 2 },
-            { sr: 'Medijski Sadržaj', en: 'Media Content', i18n: 'gdSocial', folder: 'graficki-dizajn/socijalni-mediji', total: 0, cover: 'graficki-dizajn/socijalni-mediji/cover.webp', cx: 50, cy: 26, w: 'clamp(280px,30vw,420px)', fa: 'none', fd: '0s', fdy: '0s', z: 2, openSm: true },
+            { sr: 'Medijski Sadržaj', en: 'Media Content', i18n: 'gdSocial', folder: 'graficki-dizajn/socijalni-mediji', total: 0, cover: 'graficki-dizajn/socijalni-mediji/cover.webp', cx: 82, cy: 72, w: 'clamp(190px,18vw,260px)', smCx: 50, smCy: 26, smW: 'clamp(280px,30vw,420px)', fa: 'none', fd: '0s', fdy: '0s', z: 2, openSm: true },
             { sr: 'Vizit Karte', en: 'Business Cards', i18n: 'gdVizit', folder: 'graficki-dizajn/vizit-karte', total: 6, cover: 'graficki-dizajn/vizit-karte/cover.webp', cx: 82, cy: 28, w: 'clamp(190px,18vw,260px)', fa: 'none', fd: '0s', fdy: '0s', z: 2 },
             { sr: 'Cover Art', en: 'Cover Art', i18n: 'gdCover', folder: 'graficki-dizajn/cover-art', total: 11, cover: 'graficki-dizajn/cover-art/cover.webp', cx: 18, cy: 72, w: 'clamp(190px,18vw,260px)', fa: 'none', fd: '0s', fdy: '0s', z: 2 },
             { sr: 'Thumbnailovi', en: 'Thumbnails', i18n: 'gdThumb', folder: 'graficki-dizajn/thumbnails', total: 11, cover: 'graficki-dizajn/thumbnails/cover.webp', cx: 50, cy: 72, w: 'clamp(260px,26vw,380px)', ratio: '16/9', fa: 'none', fd: '0s', fdy: '0s', z: 2 },
-            { sr: 'Matchday', en: 'Matchday', i18n: 'gdMatch', folder: 'graficki-dizajn/matchday', total: 1, cover: 'graficki-dizajn/matchday/cover.webp', cx: 82, cy: 72, w: 'clamp(190px,18vw,260px)', ratio: '4/3', fa: 'none', fd: '0s', fdy: '0s', z: 2 },
+            { sr: 'Matchday', en: 'Matchday', i18n: 'gdMatch', folder: 'graficki-dizajn/matchday', total: 1, cover: 'graficki-dizajn/matchday/cover.webp', cx: 50, cy: 26, w: 'clamp(280px,30vw,420px)', smCx: 82, smCy: 72, smW: 'clamp(190px,18vw,260px)', smRatio: '4/3', ratio: null, fa: 'none', fd: '0s', fdy: '0s', z: 2 },
         ];
 
         const gdSelEl    = document.getElementById('gd-selector');
@@ -7190,7 +7190,11 @@ body.cursor-hover #cursor-dot {
             GD_SUBS.forEach(sub => {
                 const card      = document.createElement('div');
                 card.className  = 'cat-card';
-                card.style.cssText = `position:absolute;left:${sub.cx}%;top:${sub.cy}%;transform:translate(-50%,-50%);width:${sub.w};z-index:${sub.z};`;
+                const isMobile = window.innerWidth < 768;
+                const useCx = isMobile && sub.smCx != null ? sub.smCx : sub.cx;
+                const useCy = isMobile && sub.smCy != null ? sub.smCy : sub.cy;
+                const useW  = isMobile && sub.smW  != null ? sub.smW  : sub.w;
+                card.style.cssText = `position:absolute;left:${useCx}%;top:${useCy}%;transform:translate(-50%,-50%);width:${useW};z-index:${sub.z};`;
 
                 const floatWrap = document.createElement('div');
                 floatWrap.className = 'cat-card-float';
@@ -7201,7 +7205,8 @@ body.cursor-hover #cursor-dot {
 
                 const imgWrap = document.createElement('div');
                 imgWrap.className = 'cat-card-img';
-                if (sub.ratio) { imgWrap.style.aspectRatio = sub.ratio; imgWrap.dataset.ratio = sub.ratio; }
+                const useRatio = isMobile && sub.smRatio != null ? sub.smRatio : sub.ratio;
+                if (useRatio) { imgWrap.style.aspectRatio = useRatio; imgWrap.dataset.ratio = useRatio; }
                 const img = document.createElement('img');
                 img.src = sub.cover ? `${BASE}${sub.cover}` : `${BASE}${sub.folder}/cover.webp`;
                 img.onerror = () => { img.src = `${BASE}${sub.folder}/cover.jpg`; img.onerror = null; };
