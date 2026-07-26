@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="media/brand/logo.svg">
@@ -5754,6 +5754,7 @@ body.cursor-hover #cursor-dot {
         function applyLang(lang, instant) {
             currentLang = lang;
             window.currentLang = lang;
+            document.documentElement.lang = lang;
             const t = translations[lang];
             const targets = [
                 ...document.querySelectorAll('[data-i18n]'),
