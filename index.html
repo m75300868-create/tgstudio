@@ -2705,8 +2705,8 @@ body.cursor-hover #cursor-dot {
         }
         .legal-modal-close:hover { background: #eee; }
         .legal-modal h2 {
-            font-family: var(--font-display); font-size: 1.5rem; font-weight: 300;
-            font-style: italic; margin-bottom: 1.5rem; color: #111;
+            font-family: var(--font-sans); font-size: 1.5rem; font-weight: 800;
+            font-style: normal; margin-bottom: 1.5rem; color: #111; text-transform: uppercase; letter-spacing: 0.02em;
         }
         .legal-modal h3 {
             font-family: var(--font-sans); font-size: 0.88rem; font-weight: 700;
@@ -4930,33 +4930,50 @@ body.cursor-hover #cursor-dot {
     <div class="legal-modal-overlay" id="legal-privacy" onclick="if(event.target===this)closeLegalModal()">
         <div class="legal-modal">
             <button class="legal-modal-close" onclick="closeLegalModal()">✕</button>
-            <h2 data-i18n="legalPrivacyTitle">Privacy Policy</h2>
-            <p data-i18n="legalPrivacy1">TG Studio (tgstudio.co) is a creative studio run by Todor Grbić, based in Serbia. When you reach out through the contact form, I collect your name, email, and phone number — only so I can reply to you.</p>
-            <p data-i18n="legalPrivacy2">I never sell, share, or give your information to anyone. Your data is used only to respond to your message and deliver the work we agree on.</p>
-            <p data-i18n="legalPrivacy3">This website does not use tracking cookies or analytics that follow you around the internet.</p>
-            <p data-i18n="legalPrivacy4">If you want your data deleted, just email info@tgstudio.co and I'll take care of it as soon as possible.</p>
+            <h2 data-i18n="legalPrivacyTitle">Politika privatnosti</h2>
+            <p data-i18n="legalPrivacy1">Ovaj sajt vodi Todor Grbić (TG Studio).</p>
+            <h3 data-i18n="legalPrivacyH1">Šta prikupljam:</h3>
+            <p data-i18n="legalPrivacy2">Kada me kontaktirate putem forme, prikupljam vaše ime, email adresu i broj telefona.</p>
+            <h3 data-i18n="legalPrivacyH2">Zašto:</h3>
+            <p data-i18n="legalPrivacy3">Isključivo da bih vam odgovorio i dogovorio saradnju.</p>
+            <h3 data-i18n="legalPrivacyH3">Deljenje podataka:</h3>
+            <p data-i18n="legalPrivacy4">Vaše podatke ne prodajem, ne delim i ne prosleđujem trećim licima. Nikada.</p>
+            <h3 data-i18n="legalPrivacyH4">Kolačići:</h3>
+            <p data-i18n="legalPrivacy5">Ovaj sajt ne koristi kolačiće za praćenje niti bilo kakvu analitiku.</p>
+            <h3 data-i18n="legalPrivacyH5">Brisanje podataka:</h3>
+            <p data-i18n="legalPrivacy6">Želite da obrišem vaše podatke? Pišite na info@tgstudio.co — rešavam u roku od 48 sati.</p>
         </div>
     </div>
 
     <div class="legal-modal-overlay" id="legal-terms" onclick="if(event.target===this)closeLegalModal()">
         <div class="legal-modal">
             <button class="legal-modal-close" onclick="closeLegalModal()">✕</button>
-            <h2 data-i18n="legalTermsTitle">Terms of Service</h2>
-            <p data-i18n="legalTerms1">TG Studio provides digital creative services — AI photo & video production, web development, and graphic design. Everything is delivered digitally.</p>
-            <p data-i18n="legalTerms2">Prices and timelines are agreed before starting any project. Once we agree, the price is locked in for that project.</p>
-            <p data-i18n="legalTerms3">Each project includes a set number of revisions we agree on upfront. Extra revisions beyond that may cost additional.</p>
-            <p data-i18n="legalTerms4">After full payment, you own the final work. I keep the right to show it in my portfolio unless we agree otherwise.</p>
-            <p data-i18n="legalTerms5">For any questions about these terms, reach out at info@tgstudio.co.</p>
+            <h2 data-i18n="legalTermsTitle">Uslovi korišćenja</h2>
+            <h3 data-i18n="legalTermsH1">Autorska prava:</h3>
+            <p data-i18n="legalTerms1">Sav sadržaj na ovom sajtu (slike, video, tekst, dizajn) je vlasništvo TG Studija. Kopiranje ili korišćenje bez dozvole nije dozvoljeno.</p>
+            <h3 data-i18n="legalTermsH2">Vlasništvo nad radom:</h3>
+            <p data-i18n="legalTerms2">Nakon kompletne uplate, klijent dobija puna prava na finalni materijal. TG Studio zadržava pravo da koristi radove u portfoliju, osim ako nije drugačije dogovoreno.</p>
+            <h3 data-i18n="legalTermsH3">Cene i rokovi:</h3>
+            <p data-i18n="legalTerms3">Cena i rok se dogovaraju pre početka svakog projekta. Dogovorena cena je fiksna.</p>
+            <h3 data-i18n="legalTermsH4">Ispravke:</h3>
+            <p data-i18n="legalTerms4">Svaki projekat uključuje dogovoreni broj ispravki. Dodatne ispravke se naplaćuju.</p>
+            <h3 data-i18n="legalTermsH5">Plaćanje:</h3>
+            <p data-i18n="legalTerms5">Avans od 50% pre početka rada. Preostalih 50% po završetku, pre isporuke finalnih fajlova.</p>
+            <h3 data-i18n="legalTermsH6">Kontakt:</h3>
+            <p data-i18n="legalTerms6">Za sva pitanja — info@tgstudio.co.</p>
         </div>
     </div>
 
     <div class="legal-modal-overlay" id="legal-disclaimer" onclick="if(event.target===this)closeLegalModal()">
         <div class="legal-modal">
             <button class="legal-modal-close" onclick="closeLegalModal()">✕</button>
-            <h2 data-i18n="legalDisclaimerTitle">Disclaimer</h2>
-            <p data-i18n="legalDisc1">My portfolio showcases my creative skills and what I can do. Every project is different — results depend on the scope, your requirements, and our collaboration.</p>
-            <p data-i18n="legalDisc2">Some content on this website uses AI-generated imagery and video. I use AI as a creative tool and I'm transparent about it — I don't present AI output as traditional photography.</p>
-            <p data-i18n="legalDisc3">All information on this site is kept as accurate as possible. If you spot something outdated, let me know at info@tgstudio.co.</p>
+            <h2 data-i18n="legalDisclaimerTitle">Napomena</h2>
+            <h3 data-i18n="legalDiscH0">Portfolio:</h3>
+            <p data-i18n="legalDisc0">Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, vaših zahteva i naše saradnje.</p>
+            <h3 data-i18n="legalDiscH1">AI alati:</h3>
+            <p data-i18n="legalDisc1">TG Studio koristi AI kao deo kreativnog procesa. Svaki rad prolazi kroz ručnu kontrolu kvaliteta.</p>
+            <h3 data-i18n="legalDiscH2">Tačnost informacija:</h3>
+            <p data-i18n="legalDisc2">Sve informacije na sajtu su ažurne. Ako primetite nešto zastarelo, javite na info@tgstudio.co</p>
         </div>
     </div>
 
@@ -5417,18 +5434,35 @@ body.cursor-hover #cursor-dot {
                 footerContactTitle: 'Contact',
                 footerLegalTitle: 'Legal', footerPrivacy: 'Privacy Policy', footerTerms: 'Terms of Service', footerDisclaimer: 'Disclaimer',
                 legalPrivacyTitle: 'Privacy Policy', legalTermsTitle: 'Terms of Service', legalDisclaimerTitle: 'Disclaimer',
-                legalPrivacy1: 'TG Studio (tgstudio.co) is a creative studio run by Todor Grbić, based in Serbia. When you reach out through the contact form, I collect your name, email, and phone number — only so I can reply to you.',
-                legalPrivacy2: 'I never sell, share, or give your information to anyone. Your data is used only to respond to your message and deliver the work we agree on.',
-                legalPrivacy3: 'This website does not use tracking cookies or analytics that follow you around the internet.',
-                legalPrivacy4: 'If you want your data deleted, just email info@tgstudio.co and I\'ll take care of it within 30 days.',
-                legalTerms1: 'TG Studio provides digital creative services — AI photo & video production, web development, and graphic design. Everything is delivered digitally.',
-                legalTerms2: 'Prices and timelines are agreed before starting any project. Once we agree, the price is locked in for that project.',
-                legalTerms3: 'Each project includes a set number of revisions we agree on upfront. Extra revisions beyond that may cost additional.',
-                legalTerms4: 'After full payment, you own the final work. I keep the right to show it in my portfolio unless we agree otherwise.',
-                legalTerms5: 'For any questions about these terms, reach out at info@tgstudio.co.',
-                legalDisc1: 'My portfolio showcases my creative skills and what I can do. Every project is different — results depend on the scope, your requirements, and our collaboration.',
-                legalDisc2: 'Some content on this website uses AI-generated imagery and video. I use AI as a creative tool and I\'m transparent about it — I don\'t present AI output as traditional photography.',
-                legalDisc3: 'All information on this site is kept as accurate as possible. If you spot something outdated, let me know at info@tgstudio.co.',
+                legalPrivacy1: 'This website is run by Todor Grbić (TG Studio).',
+                legalPrivacyH1: 'What I collect:',
+                legalPrivacy2: 'When you contact me through the form, I collect your name, email address, and phone number.',
+                legalPrivacyH2: 'Why:',
+                legalPrivacy3: 'Solely to respond to you and arrange collaboration.',
+                legalPrivacyH3: 'Data sharing:',
+                legalPrivacy4: 'I do not sell, share, or forward your data to third parties. Ever.',
+                legalPrivacyH4: 'Cookies:',
+                legalPrivacy5: 'This website does not use tracking cookies or any analytics.',
+                legalPrivacyH5: 'Data deletion:',
+                legalPrivacy6: 'Want your data deleted? Email info@tgstudio.co — I handle it within 48 hours.',
+                legalTermsH1: 'Copyright:',
+                legalTerms1: 'All content on this website (images, video, text, design) is the property of TG Studio. Copying or use without permission is not allowed.',
+                legalTermsH2: 'Ownership of work:',
+                legalTerms2: 'After full payment, the client receives full rights to the final material. TG Studio retains the right to use the work in its portfolio, unless agreed otherwise.',
+                legalTermsH3: 'Prices and deadlines:',
+                legalTerms3: 'Price and deadline are agreed before the start of each project. The agreed price is fixed.',
+                legalTermsH4: 'Revisions:',
+                legalTerms4: 'Each project includes an agreed number of revisions. Additional revisions are charged extra.',
+                legalTermsH5: 'Payment:',
+                legalTerms5: '50% deposit before work begins. Remaining 50% upon completion, before delivery of final files.',
+                legalTermsH6: 'Contact:',
+                legalTerms6: 'For any questions — info@tgstudio.co.',
+                legalDiscH0: 'Portfolio:',
+                legalDisc0: 'My portfolio showcases my creative skills and what I can do. Every project is different — results depend on the scope, your requirements, and our collaboration.',
+                legalDiscH1: 'AI tools:',
+                legalDisc1: 'TG Studio uses AI as part of the creative process. Every piece of work goes through manual quality control.',
+                legalDiscH2: 'Accuracy of information:',
+                legalDisc2: 'All information on this site is up to date. If you notice something outdated, contact info@tgstudio.co',
                 footerCopy1: '© 2026 TG Studio · Created by Todor Grbić · All rights reserved.',
                 footerCopy2: '',
                 // FAQ banner
@@ -5626,18 +5660,35 @@ body.cursor-hover #cursor-dot {
                 footerContactTitle: 'Kontakt',
                 footerLegalTitle: 'Pravno', footerPrivacy: 'Politika privatnosti', footerTerms: 'Uslovi korišćenja', footerDisclaimer: 'Napomena',
                 legalPrivacyTitle: 'Politika privatnosti', legalTermsTitle: 'Uslovi korišćenja', legalDisclaimerTitle: 'Napomena',
-                legalPrivacy1: 'TG Studio (tgstudio.co) je kreativni studio koji vodi Todor Grbić iz Srbije. Kada me kontaktirate putem forme, prikupljam vaše ime, email i broj telefona — isključivo da bih vam odgovorio.',
-                legalPrivacy2: 'Nikada ne prodajem, ne delim niti dajem vaše podatke bilo kome. Vaši podaci se koriste samo da odgovorim na vašu poruku i isporučim dogovoreni rad.',
-                legalPrivacy3: 'Ovaj sajt ne koristi kolačiće za praćenje niti analitiku koja vas prati po internetu.',
-                legalPrivacy4: 'Ako želite da vaši podaci budu obrisani, pošaljite email na info@tgstudio.co i srediću to u najkraćem mogućem roku.',
-                legalTerms1: 'TG Studio pruža digitalne kreativne usluge — AI foto i video produkciju, web razvoj i grafički dizajn. Sve se isporučuje digitalno.',
-                legalTerms2: 'Cene i rokovi se dogovaraju pre početka svakog projekta. Kada se dogovorimo, cena je fiksna za taj projekat.',
-                legalTerms3: 'Svaki projekat uključuje dogovoreni broj revizija. Dodatne revizije van tog obima mogu se dodatno naplatiti.',
-                legalTerms4: 'Nakon pune uplate, vi ste vlasnik finalnog rada. Ja zadržavam pravo da ga prikažem u svom portfoliju osim ako se drugačije ne dogovorimo.',
-                legalTerms5: 'Za sva pitanja u vezi ovih uslova, javite se na info@tgstudio.co.',
-                legalDisc1: 'Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, vaših zahteva i naše saradnje.',
-                legalDisc2: 'Deo sadržaja na ovom sajtu koristi AI-generisane slike i video. Koristim AI kao kreativni alat i transparentan sam po tom pitanju — ne predstavljam AI kao tradicionalnu fotografiju.',
-                legalDisc3: 'Sve informacije na ovom sajtu su što tačnije. Ako primetite nešto zastarelo, javite mi na info@tgstudio.co.',
+                legalPrivacy1: 'Ovaj sajt vodi Todor Grbić (TG Studio).',
+                legalPrivacyH1: 'Šta prikupljam:',
+                legalPrivacy2: 'Kada me kontaktirate putem forme, prikupljam vaše ime, email adresu i broj telefona.',
+                legalPrivacyH2: 'Zašto:',
+                legalPrivacy3: 'Isključivo da bih vam odgovorio i dogovorio saradnju.',
+                legalPrivacyH3: 'Deljenje podataka:',
+                legalPrivacy4: 'Vaše podatke ne prodajem, ne delim i ne prosleđujem trećim licima. Nikada.',
+                legalPrivacyH4: 'Kolačići:',
+                legalPrivacy5: 'Ovaj sajt ne koristi kolačiće za praćenje niti bilo kakvu analitiku.',
+                legalPrivacyH5: 'Brisanje podataka:',
+                legalPrivacy6: 'Želite da obrišem vaše podatke? Pišite na info@tgstudio.co — rešavam u roku od 48 sati.',
+                legalTermsH1: 'Autorska prava:',
+                legalTerms1: 'Sav sadržaj na ovom sajtu (slike, video, tekst, dizajn) je vlasništvo TG Studija. Kopiranje ili korišćenje bez dozvole nije dozvoljeno.',
+                legalTermsH2: 'Vlasništvo nad radom:',
+                legalTerms2: 'Nakon kompletne uplate, klijent dobija puna prava na finalni materijal. TG Studio zadržava pravo da koristi radove u portfoliju, osim ako nije drugačije dogovoreno.',
+                legalTermsH3: 'Cene i rokovi:',
+                legalTerms3: 'Cena i rok se dogovaraju pre početka svakog projekta. Dogovorena cena je fiksna.',
+                legalTermsH4: 'Ispravke:',
+                legalTerms4: 'Svaki projekat uključuje dogovoreni broj ispravki. Dodatne ispravke se naplaćuju.',
+                legalTermsH5: 'Plaćanje:',
+                legalTerms5: 'Avans od 50% pre početka rada. Preostalih 50% po završetku, pre isporuke finalnih fajlova.',
+                legalTermsH6: 'Kontakt:',
+                legalTerms6: 'Za sva pitanja — info@tgstudio.co.',
+                legalDiscH0: 'Portfolio:',
+                legalDisc0: 'Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, vaših zahteva i naše saradnje.',
+                legalDiscH1: 'AI alati:',
+                legalDisc1: 'TG Studio koristi AI kao deo kreativnog procesa. Svaki rad prolazi kroz ručnu kontrolu kvaliteta.',
+                legalDiscH2: 'Tačnost informacija:',
+                legalDisc2: 'Sve informacije na sajtu su ažurne. Ako primetite nešto zastarelo, javite na info@tgstudio.co',
                 footerCopy1: '© 2026 TG Studio · Kreirao Todor Grbić · Sva prava zadržana.',
                 footerCopy2: '',
                 // FAQ banner
