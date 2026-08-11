@@ -2,12 +2,47 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
+    <!-- OG Meta -->
+    <meta property="og:title" content="TG Studio — AI Product Photography & Video Production">
+    <meta property="og:description" content="Everything your brand needs in one place — from photography to website.">
+    <meta property="og:image" content="https://www.tgstudio.co/media/brand/logo.png">
+    <meta property="og:url" content="https://www.tgstudio.co">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TG Studio">
+    <meta name="twitter:image" content="https://www.tgstudio.co/media/brand/logo.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "TG Studio",
+      "url": "https://www.tgstudio.co",
+      "logo": "https://www.tgstudio.co/media/brand/logo.png",
+      "image": "https://www.tgstudio.co/media/brand/logo.png",
+      "description": "AI-powered product photography, video ads, and visual content for brands and e-commerce businesses.",
+      "telephone": "+381645407176",
+      "email": "info@tgstudio.co",
+      "founder": {"@type": "Person", "name": "Todor Grbić"},
+      "areaServed": ["Serbia", "Croatia", "Europe"],
+      "serviceType": ["Product Photography", "AI Photo Production", "Video Production", "Graphic Design", "Web Design"],
+      "priceRange": "$$",
+      "sameAs": ["https://www.instagram.com/tg.studio__/"]
+    }
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3C7H9XG6W"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X3C7H9XG6W');</script>
     <link rel="icon" type="image/svg+xml" href="media/brand/logo.svg">
     <link rel="icon" type="image/png" href="media/brand/logo.png">
     <link rel="apple-touch-icon" href="media/brand/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <title>TG Studio</title>
+    <meta name="description" content="TG Studio — AI-powered product photography, video ads, and visual content for brands and e-commerce. Faster, affordable, studio-quality results without traditional production.">
+    <meta name="keywords" content="AI product photography, AI photo production, product photography Serbia, e-commerce photography, AI video production, brand photography, TG Studio, visual content creation">
+    <meta name="author" content="TG Studio — Todor Grbić">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.tgstudio.co/">
+    <title>TG Studio — AI Product Photography & Video Production</title>
 
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -441,6 +476,13 @@ body.cursor-hover #cursor-dot {
             color: var(--c-highlight);
             margin-bottom: 2rem;
         }
+        #hero-todor {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            text-transform: none;
+        }
         .hero-title em {
             font-family: var(--font-serif);
             font-style: italic;
@@ -728,7 +770,7 @@ body.cursor-hover #cursor-dot {
         .page-section {
             position: relative;
             z-index: 5;
-            padding: 8rem 3.5rem;
+            padding: 4.75rem 3.5rem;
         }
 
         .section-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
@@ -896,17 +938,40 @@ body.cursor-hover #cursor-dot {
         }
         #cc2:hover, #contact-form:hover,
         .contact-unified.glass:hover, .contact-form.glass:hover {
-            box-shadow: inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(30,30,30,0.08), inset 1px 0 0 rgba(255,255,255,0.07), inset -1px 0 0 rgba(255,255,255,0.04), 0 8px 32px rgba(5,5,5,0.5), 0 2px 8px rgba(5,5,5,0.35), 0 0 0 1px rgba(255,255,255,0.07) !important;
             transform: none !important;
-            backdrop-filter: blur(28px) saturate(1.6) brightness(1.08) !important;
-            background: rgba(255,255,255,0.06) !important;
         }
         #cc2::before, #cc2::after,
         #contact-form::before, #contact-form::after {
             display: none !important;
         }
-        /* Contact cards — same color as other cards */
-        #cc1, #cc2, #cc3, #contact-form {
+        /* Contact cards — identical styling */
+        #cc1, #contact-form {
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.07) !important;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.04) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-radius: 1.5rem !important;
+        }
+        #cc2 {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        #contact-form-wrap {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        #cc1::before, #cc1::after,
+        #cc2::before, #cc2::after,
+        #contact-form::before, #contact-form::after,
+        #contact-form-wrap::before, #contact-form-wrap::after {
+            display: none !important;
+        }
+        #cc3 {
             background: rgba(255, 255, 255, 0.06) !important;
             border-color: rgba(0,0,0,0.12) !important;
         }
@@ -1815,14 +1880,9 @@ body.cursor-hover #cursor-dot {
         }
         /* 3D extrusion override — glass style matching site theme */
         .process-step.glass {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(0,0,0,0.12);
-            box-shadow:
-                0 2px 0 rgba(255,255,255,0.18) inset,
-                0 24px 48px rgba(0, 0, 0, 0.38),
-                0 12px 20px rgba(0, 0, 0, 0.28),
-                0 4px 8px  rgba(0, 0, 0, 0.22),
-                0 1px 2px  rgba(0, 0, 0, 0.18);
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.10);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 8px 32px rgba(0,0,0,0.07);
         }
         .process-step.glass:hover {
             transform: none;
@@ -1954,14 +2014,9 @@ body.cursor-hover #cursor-dot {
         }
         /* 3D extrusion override — matches site glass style */
         .why-pillar.glass {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(0,0,0,0.12);
-            box-shadow:
-                0 2px 0 rgba(255,255,255,0.18) inset,
-                0 24px 48px rgba(0, 0, 0, 0.38),
-                0 12px 20px rgba(0, 0, 0, 0.28),
-                0 4px 8px  rgba(0, 0, 0, 0.22),
-                0 1px 2px  rgba(0, 0, 0, 0.18);
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.10);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 8px 32px rgba(0,0,0,0.07);
         }
         .why-pillar.glass:hover {
             transform: none;
@@ -2471,9 +2526,18 @@ body.cursor-hover #cursor-dot {
             display: flex;
             flex-direction: column;
             flex: 1;
-            gap: 1.2rem;
-            padding: 2.2rem;
+            gap: 1.4rem;
+            padding: 2.5rem 2.5rem;
             border-radius: 1.25rem;
+            justify-content: center;
+        }
+        .contact-form .form-field:last-of-type {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form .form-field:last-of-type .form-textarea {
+            flex: 1;
         }
 
         .form-row {
@@ -2947,11 +3011,12 @@ body.cursor-hover #cursor-dot {
 
             /* ── ALL PAGE SECTIONS ── */
             .page-section {
-                padding: 4rem 1.25rem !important;
+                padding: 3rem 1.25rem !important;
                 text-align: center !important;
                 align-items: center !important;
                 display: flex !important;
                 flex-direction: column !important;
+                overflow: hidden !important;
             }
             .section-inner { width: 100% !important; max-width: 100% !important; }
             #edu7-card { width: 100% !important; box-sizing: border-box !important; }
@@ -3013,6 +3078,7 @@ body.cursor-hover #cursor-dot {
                 transition: none !important; position: relative !important;
                 display: flex !important; flex-direction: column !important;
                 height: auto !important; background: #ffffff !important;
+                box-sizing: border-box !important; overflow: hidden !important;
             }
             /* Mobile: image on top, fixed height */
             .portfolio-card-media {
@@ -3041,7 +3107,7 @@ body.cursor-hover #cursor-dot {
 
             /* ── FAQ ── */
             .faq-list { width: 100% !important; }
-            .faq-item { width: 100% !important; }
+            .faq-item { width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
             .faq-ai-card { flex-direction: column !important; text-align: center !important; gap: 0.8rem !important; }
             #faq-ai-wrap { max-width: 100% !important; }
 
@@ -3051,12 +3117,23 @@ body.cursor-hover #cursor-dot {
                 text-align: center !important;
                 align-items: center !important;
                 width: 100% !important;
+                box-sizing: border-box !important;
+                min-height: unset !important;
+                padding: 1.5rem 1.25rem !important;
+                overflow: hidden !important;
             }
             .process-note { text-align: center !important; }
 
             /* ── WHY ── */
             .why-pillars { grid-template-columns: 1fr !important; gap: 1rem !important; width: 100% !important; }
-            .why-pillar { text-align: center !important; width: 100% !important; }
+            .why-pillar {
+                text-align: center !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                min-height: unset !important;
+                padding: 1.5rem 1.25rem !important;
+                overflow: hidden !important;
+            }
             .why-intro { text-align: center !important; }
 
             /* ── EDU ── */
@@ -3152,10 +3229,11 @@ body.cursor-hover #cursor-dot {
             /* ── CONTACT ── */
             .contact-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
             .contact-info { display: flex !important; flex-direction: column !important; gap: 1rem !important; width: 100% !important; }
-            #cc1, #cc2, #cc3 { width: 100% !important; margin: 0 !important; }
+            #cc1, #cc2, #cc3 { width: 100% !important; margin: 0 !important; box-sizing: border-box !important; overflow: hidden !important; }
             .contact-card-value { font-size: 0.85rem !important; word-break: break-all !important; }
             .form-row { grid-template-columns: 1fr !important; gap: 0 !important; }
-            .contact-form { padding: 1.5rem 1.25rem !important; }
+            .contact-form { padding: 1.5rem 1.25rem !important; box-sizing: border-box !important; }
+            .form-submit { position: relative !important; z-index: 10 !important; pointer-events: auto !important; }
             .project-chips { flex-wrap: wrap !important; justify-content: center !important; gap: 0.4rem !important; }
             .form-submit { width: 100% !important; }
             .phone-input-wrap { flex-direction: row !important; }
@@ -4091,12 +4169,12 @@ body.cursor-hover #cursor-dot {
             </a>
             <div class="nav-center">
                 <a href="#about"        class="nav-link"><span data-i18n="navAbout">O nama</span></a>
-                <a href="#path-chooser" class="nav-link"><span data-i18n="navPath">Orijentacija</span></a>
+                <!-- orijentacija nav removed -->
                 <a href="#portfolio"    class="nav-link"><span data-i18n="navPortfolio">Portfolio</span></a>
                 <a href="#faq"          class="nav-link"><span data-i18n="navFaq">FAQ</span></a>
                 <a href="#process"      class="nav-link"><span data-i18n="navProcess">Proces rada</span></a>
                 <a href="#why"          class="nav-link"><span data-i18n="navWhy">Zašto mi</span></a>
-                <a href="#edukacije"    class="nav-link"><span data-i18n="navEdu">Edukacije</span></a>
+                <!-- edukacije nav removed -->
                 <a href="#contact"      class="nav-link"><span data-i18n="navContact">Kontakt</span></a>
             </div>
             <div class="nav-right">
@@ -4113,11 +4191,11 @@ body.cursor-hover #cursor-dot {
 
         <div class="hero" style="width:100%;text-align:center;align-items:center;">
             <h1 class="hero-title" style="line-height:1.05;text-align:center;width:100%;">
-                <span style="display:block;text-align:center;" data-i18n-html="heroTitle1">ZDRAVO <em>ja sam</em> <span id="hero-todor">TODOR</span></span>
-                <span style="display:block;text-align:center;" data-i18n-html="heroTitle2">AI KREATOR &amp; DIZAJNER</span>
+                <span style="display:block;text-align:center;" data-i18n-html="heroTitle1"><span id="hero-todor">TG STUDIO</span></span>
+                <span style="display:block;text-align:center;font-size:clamp(1.47rem,3.26vw,2.78rem);margin-top:0.3rem;" data-i18n-html="heroTitle2">FOTO, VIDEO, DIZAJN I WEB DIZAJN NA JEDNOM MESTU</span>
             </h1>
             <p id="hero-sub" style="font-family:var(--font-display);font-size:clamp(0.85rem,1.4vw,1.05rem);color:#111111;margin-top:1rem;font-weight:800;line-height:1.7;max-width:900px;opacity:1;text-align:center;" data-i18n-html="heroSub">
-                Pomažem <strong style="font-weight:800;background:linear-gradient(90deg,#aaaaaa 0%,#777777 30%,#333333 65%,#111111 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">brendovima i kreatorima</strong> da izgledaju <strong style="font-weight:800;background:linear-gradient(90deg,#aaaaaa 0%,#777777 30%,#333333 65%,#111111 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">profesionalno</strong> — <strong style="font-weight:800;background:linear-gradient(90deg,#aaaaaa 0%,#777777 30%,#333333 65%,#111111 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">bez skupog studija</strong> i bez <strong style="font-weight:800;background:linear-gradient(90deg,#aaaaaa 0%,#777777 30%,#333333 65%,#111111 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">čekanja</strong>.
+                Sve što tvoj brend treba na jednom mestu — od fotografije do websajta.
             </p>
             <div class="hero-actions" style="margin-top:2.5rem;opacity:1;justify-content:center;align-items:center;width:100%;">
                 <a href="#portfolio" class="btn-main" style="width:360px;white-space:nowrap;text-align:center;justify-content:center;"><span data-i18n="heroCta1">Pogledaj Radove</span></a>
@@ -4145,7 +4223,7 @@ body.cursor-hover #cursor-dot {
         </style>
 
         <!-- Stats box -->
-        <div id="hero-stats-tilt-wrap" style="width:fit-content;margin:0 2.5rem 2rem auto;grid-column:2;grid-row:3;display:flex;justify-content:flex-end;">
+        <div id="hero-stats-tilt-wrap" style="width:fit-content;margin:0 2.5rem 2rem auto;grid-column:1 / -1;grid-row:3;display:flex;justify-content:flex-end;">
         <div class="hero-stats glass" id="hero-stats" style="margin:0;grid-column:unset;grid-row:unset;">
             <div class="hstat">
                 <div class="hstat-num"><span class="hstat-count" data-target="400" data-suffix="+">0</span></div>
@@ -4180,17 +4258,17 @@ body.cursor-hover #cursor-dot {
                 <div class="reveal about-left-col">
                     <div class="about-avatar-wrap">
                         <div class="orbit-system" id="orbitSystem">
-                            <div class="orbit-logo" id="ol0"><img src="logos/1.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol1"><img src="logos/2.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol2"><img src="logos/3.webp" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol3"><img src="logos/4.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol4"><img src="logos/5.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol5"><img src="logos/6.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol6"><img src="logos/7.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol7"><img src="logos/8.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol8"><img src="logos/9.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol9"><img src="logos/10.png" alt="tool" loading="lazy" decoding="async"></div>
-                            <div class="orbit-logo" id="ol10"><img src="logos/11.png" alt="tool" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol0"><img src="logos/1.png" alt="AI creative tool" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol1"><img src="logos/2.png" alt="Flux AI image generator" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol2"><img src="logos/3.webp" alt="Kling AI video" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol3"><img src="logos/4.png" alt="Hailuo AI video" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol4"><img src="logos/5.png" alt="Seedance AI motion" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol5"><img src="logos/6.png" alt="DaVinci Resolve editor" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol6"><img src="logos/7.png" alt="Adobe Photoshop" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol7"><img src="logos/8.png" alt="Adobe Illustrator" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol8"><img src="logos/9.png" alt="Figma design tool" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol9"><img src="logos/10.png" alt="Blender 3D" loading="lazy" decoding="async"></div>
+                            <div class="orbit-logo" id="ol10"><img src="logos/11.png" alt="ChatGPT AI assistant" loading="lazy" decoding="async"></div>
                             <div class="about-avatar-ring">
                                 <div class="about-avatar">
                                     <img src="media/profile/foto.webp"
@@ -4234,18 +4312,7 @@ body.cursor-hover #cursor-dot {
     </section>
 
 
-    <!-- ── PATH CHOOSER ── -->
-    <section id="path-chooser" class="page-section">
-        <div class="section-inner" style="display:flex;flex-direction:column;align-items:center;gap:2.5rem;">
-            <div>
-                <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,3.2rem);font-weight:800;letter-spacing:0.07em;text-transform:uppercase;background:linear-gradient(90deg,#aaaaaa 0%,#777777 30%,#333333 65%,#111111 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15;" data-i18n-html="pathTitle">ŠTA <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;text-transform:none;font-size:0.82em;">Vas</em> ZANIMA?</h2>
-            </div>
-            <div style="display:flex;flex-direction:row;gap:1.2rem;align-items:center;justify-content:center;width:100%;flex-wrap:wrap;">
-                <a href="#contact" class="path-btn path-btn-service edu-quote-box" style="text-align:center;width:360px;white-space:nowrap;animation:none!important;transform:none!important;" data-i18n="pathBtnService">Hoću da mi napraviš sadržaj</a>
-                <a href="#edukacije" class="path-btn path-btn-edu edu-quote-box" style="text-align:center;width:360px;white-space:nowrap;animation:none!important;transform:none!important;" data-i18n="pathBtnEdu">Hoću sam da naučim</a>
-            </div>
-        </div>
-    </section>
+    <!-- path-chooser removed -->
     <style>
         .path-btn {
             animation: none !important;
@@ -4346,7 +4413,7 @@ body.cursor-hover #cursor-dot {
                     <div id="card-gd-trigger" class="portfolio-card glass" style="cursor:pointer">
                         <div class="portfolio-card-media">
                             <img src="images/graficki-dizajn.jpg"
-                                alt="Graphic Design" loading="lazy" decoding="async" style="object-fit:cover;object-position:center 20%;">
+                                alt="Graphic design services by TG Studio" loading="lazy" decoding="async" style="object-fit:cover;object-position:center 20%;">
                             <div class="portfolio-card-media-overlay"></div>
                             <span class="portfolio-card-arrow">→</span>
                         </div>
@@ -4368,7 +4435,7 @@ body.cursor-hover #cursor-dot {
                     <div class="pf-float">
                     <a href="#contact" class="portfolio-card glass">
                         <div class="portfolio-card-media">
-                            <img src="images/web-development.jpg" alt="Web Development" loading="lazy" decoding="async">
+                            <img src="images/web-development.jpg" alt="Web development and design by TG Studio" loading="lazy" decoding="async">
                             <div class="portfolio-card-media-overlay"></div>
                             <span class="portfolio-card-arrow">→</span>
                         </div>
@@ -4473,7 +4540,7 @@ body.cursor-hover #cursor-dot {
 
                 <h2 class="section-title" style="margin-bottom:0.75rem;" data-i18n-html="processTitle">KAKO TO <em>funkcioniše?</em></h2>
                 <p style="max-width:560px;margin:0 auto 0;font-family:var(--font-display);font-size:0.88rem;font-weight:800;line-height:1.78;color:#111111;padding-bottom:0.75rem;" data-i18n="processSubtitle">
-                    Nije potrebna skupocena oprema, studio ni iskustvo. Sve što Vam treba stane u džep — ostatak je na meni.
+                    Nije potrebna skupocena oprema, studio ni iskustvo. Sve što ti treba stane u džep — ostatak je na meni.
                 </p>
             </div>
 
@@ -4482,14 +4549,14 @@ body.cursor-hover #cursor-dot {
                     <div class="process-step-num">
                         <svg viewBox="0 0 24 24"><path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.22-1.2 4.16-3 5.2V17H9v-2.8A6 6 0 0 1 6 9a6 6 0 0 1 6-6z"/></svg>
                     </div>
-                    <div class="process-step-title" data-i18n="process1Title">Pošaljite ideju</div>
-                    <p class="process-step-desc" data-i18n="process1Desc">Napišite mi kratko šta Vam treba — par rečenica o proizvodu, brendu ili viziji. Nema pogrešnog odgovora.</p>
+                    <div class="process-step-title" data-i18n="process1Title">Pošalji ideju</div>
+                    <p class="process-step-desc" data-i18n="process1Desc">Napiši mi kratko šta ti treba — par rečenica o proizvodu, brendu ili viziji. Nema pogrešnog odgovora.</p>
                 </div>
                 <div class="process-step glass reveal reveal-d2">
                     <div class="process-step-num">
                         <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                     </div>
-                    <div class="process-step-title" data-i18n="process2Title">Ili pošaljite foto</div>
+                    <div class="process-step-title" data-i18n="process2Title">Ili pošalji foto</div>
                     <p class="process-step-desc" data-i18n="process2Desc">Slikajte proizvod mobilnim telefonom — obična fotografija je sasvim dovoljna. Ja se brinem za sve ostalo.</p>
                 </div>
                 <div class="process-step glass reveal reveal-d3">
@@ -4497,20 +4564,20 @@ body.cursor-hover #cursor-dot {
                         <svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/><path d="M19 14l.75 2.25L22 17l-2.25.75L19 20l-.75-2.25L16 17l2.25-.75L19 14z"/><path d="M5 18l.5 1.5L7 20l-1.5.5L5 22l-.5-1.5L3 20l1.5-.5L5 18z"/></svg>
                     </div>
                     <div class="process-step-title" data-i18n="process3Title">Ja kreiram</div>
-                    <p class="process-step-desc" data-i18n="process3Desc">Primenom AI produkcije i profesionalnog dizajna, Vaš proizvod dobija premium vizuelni identitet za koji bi inače bio potreban studio.</p>
+                    <p class="process-step-desc" data-i18n="process3Desc">Primenom AI produkcije i profesionalnog dizajna, tvoj proizvod dobija premium vizuelni identitet za koji bi inače bio potreban studio.</p>
                 </div>
                 <div class="process-step glass reveal reveal-d4">
                     <div class="process-step-num">
                         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     </div>
-                    <div class="process-step-title" data-i18n="process4Title">Vi dobijate rezultat</div>
-                    <p class="process-step-desc" data-i18n="process4Desc">Finalni materijali su gotovi za korišćenje — za sajt, društvene mreže, reklame ili bilo šta što Vam treba.</p>
+                    <div class="process-step-title" data-i18n="process4Title">Gotov rezultat</div>
+                    <p class="process-step-desc" data-i18n="process4Desc">Finalni materijali su gotovi za korišćenje — za sajt, društvene mreže, reklame ili bilo šta što ti treba.</p>
                 </div>
             </div>
 
             <div class="process-note reveal">
                 <p>
-                    <span data-i18n-html="processNote"><strong>Bez skupih fotostudija. Bez složenih procesa. Bez čekanja.</strong><br>Samo mi recite šta želite — ili pošaljite fotografiju telefonom — i za kratko vreme dobijate profesionalni vizuelni sadržaj koji izgleda kao da je rađen u premium studiju.</span>
+                    <span data-i18n-html="processNote"><strong>Bez skupih fotostudija. Bez složenih procesa. Bez čekanja.</strong><br>Samo mi reci šta želiš — ili pošalji fotografiju telefonom — i za kratko vreme dobijaš profesionalni vizuelni sadržaj koji izgleda kao da je rađen u premium studiju.</span>
                 </p>
             </div>
         </div>
@@ -4567,7 +4634,7 @@ body.cursor-hover #cursor-dot {
 
 
     <!-- ── EDUKACIJE ── -->
-    <section id="edukacije" class="page-section">
+    <section id="edukacije" class="page-section" style="display:none!important;">
         <div class="section-inner">
             <div style="text-align:center;margin-bottom:4rem;">
                 <h2 class="section-title" style="margin-bottom:1.2rem;" data-i18n-html="eduTitle">Naše <em>Edukacije</em></h2>
@@ -4734,7 +4801,7 @@ body.cursor-hover #cursor-dot {
     <section id="contact" class="page-section">
         <div class="section-inner">
             <div class="reveal" style="margin:0 auto 4rem; text-align:center; overflow:visible;">
-                <h2 class="section-title" data-i18n-html="contactTitle" style="text-transform:none;">Zakažite <em>besplatnu</em> Konsultaciju</h2>
+                <h2 class="section-title" data-i18n-html="contactTitle" style="text-transform:none;">Zakaži <em>besplatnu</em> Konsultaciju</h2>
                 <p style="font-family:var(--font-display);font-size:0.85rem;line-height:1.8;color:#000000;font-weight:800;" data-i18n="contactDesc">
                     Whether you need AI production, branding, design, or a modern website, let's create something that makes an impact.
                 </p>
@@ -4742,7 +4809,7 @@ body.cursor-hover #cursor-dot {
             <div class="contact-grid">
                 <!-- Info -->
                 <div class="contact-info" id="cc1">
-                    <div class="contact-unified glass" id="cc2" style="opacity:1;transform:none;">
+                    <div class="contact-unified" id="cc2" style="opacity:1;transform:none;">
 
                         <!-- Heading -->
                         <div style="text-align:center;margin-bottom:1.4rem;">
@@ -4801,7 +4868,7 @@ body.cursor-hover #cursor-dot {
                 <!-- Form -->
                 <div class="reveal reveal-d2">
                     <div id="contact-form-wrap">
-                        <form class="contact-form glass" id="contact-form" data-cc="4"
+                        <form class="contact-form" id="contact-form" data-cc="4"
                               name="contact" method="POST"
                               data-netlify="true"
                               data-netlify-honeypot="bot-field"
@@ -4810,56 +4877,18 @@ body.cursor-hover #cursor-dot {
                             <input type="hidden" name="form-name" value="contact">
                             <p style="display:none"><label>Ne popunjavaj: <input name="bot-field"></label></p>
 
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label class="form-label" data-i18n="formName">Name</label>
-                                    <input type="text" name="ime" class="form-input" data-i18n-ph="formNamePh" placeholder="Vaše ime">
-                                </div>
-                                <div class="form-field">
-                                    <label class="form-label" data-i18n="formEmail">Email</label>
-                                    <input type="text" name="mejl" class="form-input" data-i18n-ph="formEmailPh" placeholder="vas@mejl.com">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label class="form-label" data-i18n="formPhone">Telefon</label>
-                                    <div class="phone-input-wrap" style="display:flex;gap:0.5rem;align-items:stretch;">
-                                        <div class="phone-country-wrap" style="position:relative;">
-                                            <button type="button" id="phone-country-btn" style="height:100%;min-width:96px;padding:0 0.75rem;background:#ffffff;border:1px solid rgba(0,0,0,0.10);border-radius:100px;color:#111111;font-size:0.88rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:0.45rem;white-space:nowrap;transition:border-color 0.25s,box-shadow 0.25s;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),0 4px 16px rgba(0,0,0,0.07);">
-                                                <span id="phone-flag" style="display:flex;align-items:center;"><img src="https://flagcdn.com/20x15/rs.png" style="width:22px;height:16px;border-radius:3px;object-fit:cover;box-shadow:0 1px 4px rgba(0,0,0,0.18);" alt=""></span>
-                                                <span id="phone-code" style="font-size:0.88rem;color:#111111;">+381</span>
-                                                <svg width="10" height="7" viewBox="0 0 10 7" fill="none" style="opacity:0.45;flex-shrink:0;"><path d="M1 1l4 4 4-4" stroke="#111111" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                            </button>
-                                            <div id="phone-country-dropdown" style="display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:9999;width:290px;max-height:300px;overflow:hidden;border-radius:1.2rem;box-shadow:0 16px 48px rgba(0,0,0,0.15),0 0 0 1px rgba(0,0,0,0.08);background:#ffffff;backdrop-filter:none;flex-direction:column;">
-                                                <div style="padding:0.65rem 0.75rem;border-bottom:1px solid rgba(0,0,0,0.08);position:relative;">
-                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);opacity:0.35;pointer-events:none;"><circle cx="11" cy="11" r="8" stroke="#111" stroke-width="2"/><path d="M21 21l-4-4" stroke="#111" stroke-width="2" stroke-linecap="round"/></svg>
-                                                    <input type="text" id="phone-country-search" placeholder="Pretraži državu..." style="width:100%;padding:0.45rem 0.5rem 0.45rem 2rem;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.10);border-radius:100px;color:#111111;font-size:0.84rem;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(0,0,0,0.3)'" onblur="this.style.borderColor='rgba(0,0,0,0.10)'">
-                                                </div>
-                                                <div id="phone-country-list" style="overflow-y:auto;max-height:240px;padding:0.3rem 0;"></div>
-                                            </div>
-                                        </div>
-                                        <input type="tel" name="telefon" id="phone-number-input" class="form-input" placeholder="12 345 6789" style="flex:1;">
-                                        <input type="hidden" name="telefon_full" id="phone-full">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-field" id="project-type-field">
-                                <label class="form-label" data-i18n="formProject">Project Type</label>
-                                <input type="hidden" id="project-type-value" name="project_type">
-                                <div class="project-chips" id="project-chips">
-                                    <button type="button" class="proj-chip" data-value="AI Foto" data-i18n="chipAIPhoto">AI Foto</button>
-                                    <button type="button" class="proj-chip" data-value="AI Video" data-i18n="chipAIVideo">AI Video</button>
-                                    <button type="button" class="proj-chip" data-value="Dizajn" data-i18n="chipDesign">Dizajn</button>
-                                    <button type="button" class="proj-chip" data-value="Web Razvoj" data-i18n="chipWeb">Web Razvoj</button>
-                                    <button type="button" class="proj-chip" data-value="Edukacije" data-i18n="chipEdu">Edukacije</button>
-                                    <button type="button" class="proj-chip" data-value="Movie">Movie</button>
-                                    <button type="button" class="proj-chip proj-chip-other" id="proj-chip-other" data-value="other" data-i18n="chipOther">Drugo ✎</button>
-                                </div>
-                                <input type="text" class="form-input proj-other-input" id="proj-other-input" placeholder="Opišite vaš projekat…" style="display:none;margin-top:0.6rem;">
+                            <div class="form-field">
+                                <label class="form-label" data-i18n="formName">Ime</label>
+                                <input type="text" name="ime" class="form-input" data-i18n-ph="formNamePh" placeholder="Tvoje ime">
                             </div>
                             <div class="form-field">
+                                <label class="form-label" data-i18n="formEmail">Mejl</label>
+                                <input type="text" name="mejl" class="form-input" data-i18n-ph="formEmailPh" placeholder="vas@mejl.com">
+                            </div>
+                            <!-- phone and project type removed -->
+                            <div class="form-field">
                                 <label class="form-label" data-i18n="formMessage">Message</label>
-                                <textarea name="poruka" class="form-textarea" rows="5" data-i18n-ph="formMessagePh" placeholder="Ispričajte mi o svom projektu…"></textarea>
+                                <textarea name="poruka" class="form-textarea" rows="5" data-i18n-ph="formMessagePh" placeholder="Ispričaj mi o svom projektu…" style="flex:1;min-height:120px;"></textarea>
                             </div>
                             <button type="submit" class="form-submit" id="form-submit-btn" data-i18n="formSubmit">Pošalji poruku →</button>
                         </form>
@@ -4875,7 +4904,7 @@ body.cursor-hover #cursor-dot {
             <div>
                 <img src="media/brand/logo.svg"
                      onerror="this.src='media/brand/logo.png';this.onerror=null;"
-                     alt="TG Studio" class="footer-logo">
+                     alt="TG Studio footer logo" class="footer-logo">
                 <p class="footer-brand-desc" data-i18n="footerBrandDesc">AI visual artist and digital producer — premium visual solutions.</p>
                 <div class="footer-social-row">
                     <a href="https://www.instagram.com/2todor3/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -4894,12 +4923,12 @@ body.cursor-hover #cursor-dot {
                 <div class="footer-links">
                     <a href="#home"          class="footer-link" data-i18n="footerHome">Home</a>
                     <a href="#about"         class="footer-link" data-i18n="navAbout">About</a>
-                    <a href="#path-chooser" class="footer-link" data-i18n="navPath">Orijentacija</a>
+                    <!-- orijentacija footer link removed -->
                     <a href="#portfolio"     class="footer-link" data-i18n="navPortfolio">Portfolio</a>
                     <a href="#process"       class="footer-link" data-i18n="navProcess">Kako funkcioniše</a>
                     <a href="#faq"           class="footer-link" data-i18n="navFaq">FAQ</a>
                     <a href="#why"           class="footer-link" data-i18n="navWhy">Why Us</a>
-                    <a href="#edukacije"     class="footer-link" data-i18n="navEdu">Edukacije</a>
+                    <!-- edukacije footer link removed -->
                     <a href="#contact"       class="footer-link" data-i18n="navCta2">Contact</a>
                 </div>
             </div>
@@ -4933,15 +4962,15 @@ body.cursor-hover #cursor-dot {
             <h2 data-i18n="legalPrivacyTitle">Politika privatnosti</h2>
             <p data-i18n="legalPrivacy1">Ovaj sajt vodi Todor Grbić (TG Studio).</p>
             <h3 data-i18n="legalPrivacyH1">Šta prikupljam:</h3>
-            <p data-i18n="legalPrivacy2">Kada me kontaktirate putem forme, prikupljam vaše ime, email adresu i broj telefona.</p>
+            <p data-i18n="legalPrivacy2">Kada me kontaktiraš putem forme, prikupljam tvoje ime, email adresu i broj telefona.</p>
             <h3 data-i18n="legalPrivacyH2">Zašto:</h3>
-            <p data-i18n="legalPrivacy3">Isključivo da bih vam odgovorio i dogovorio saradnju.</p>
+            <p data-i18n="legalPrivacy3">Isključivo da bih ti odgovorio i dogovorio saradnju.</p>
             <h3 data-i18n="legalPrivacyH3">Deljenje podataka:</h3>
-            <p data-i18n="legalPrivacy4">Vaše podatke ne prodajem, ne delim i ne prosleđujem trećim licima. Nikada.</p>
+            <p data-i18n="legalPrivacy4">Tvoje podatke ne prodajem, ne delim i ne prosleđujem trećim licima. Nikada.</p>
             <h3 data-i18n="legalPrivacyH4">Kolačići:</h3>
             <p data-i18n="legalPrivacy5">Ovaj sajt ne koristi kolačiće za praćenje niti bilo kakvu analitiku.</p>
             <h3 data-i18n="legalPrivacyH5">Brisanje podataka:</h3>
-            <p data-i18n="legalPrivacy6">Želite da obrišem vaše podatke? Pišite na info@tgstudio.co — rešavam u roku od 48 sati.</p>
+            <p data-i18n="legalPrivacy6">Želiš da obrišem tvoje podatke? Piši na info@tgstudio.co — rešavam u roku od 48 sati.</p>
         </div>
     </div>
 
@@ -4969,7 +4998,7 @@ body.cursor-hover #cursor-dot {
             <button class="legal-modal-close" onclick="closeLegalModal()">✕</button>
             <h2 data-i18n="legalDisclaimerTitle">Napomena</h2>
             <h3 data-i18n="legalDiscH0">Portfolio:</h3>
-            <p data-i18n="legalDisc0">Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, vaših zahteva i naše saradnje.</p>
+            <p data-i18n="legalDisc0">Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, tvojih zahteva i naše saradnje.</p>
             <h3 data-i18n="legalDiscH1">AI alati:</h3>
             <p data-i18n="legalDisc1">TG Studio koristi AI kao deo kreativnog procesa. Svaki rad prolazi kroz ručnu kontrolu kvaliteta.</p>
             <h3 data-i18n="legalDiscH2">Tačnost informacija:</h3>
@@ -5361,9 +5390,9 @@ body.cursor-hover #cursor-dot {
                 // Hero
                 heroBadge: 'AI • DESIGN • WEB', heroLine1: 'Welcome to',
                 heroAccent: 'First AI Production in the Balkans.',
-                heroTitle1: 'HI <em>I\'m</em> <span id="hero-todor"></span>',
-                heroTitle2: 'AI CREATOR &amp; DESIGNER',
-                heroSub: 'I help <strong style="color:#111111;font-weight:600;">brands and creators</strong> get a premium visual identity — so they look professional <strong style="color:#111111;font-weight:600;">without expensive studios or long waits</strong>.',
+                heroTitle1: '<span id="hero-todor">TG STUDIO</span>',
+                heroTitle2: 'PHOTO, VIDEO, DESIGN &amp; WEB DESIGN IN ONE PLACE',
+                heroSub: 'Everything your brand needs in one place — from photography to website.',
                 heroCta1: 'View Portfolio', heroCta2: "Let's Talk",
                 statProjects: 'Projects completed', statSatisfaction: 'Client satisfaction', statYears: 'Years of experience', statIdeas: 'Ideas', statStudents: 'Educated creators',
                 heroFooterAvail: 'Available for projects',
@@ -5578,18 +5607,18 @@ body.cursor-hover #cursor-dot {
                 navPath: 'Orijentacija', navEdu: 'Edukacije',
                 // Process
                 processTitle: 'PROCES <em>rada</em>',
-                processSubtitle: 'Od vaše ideje do gotovog materijala — u samo nekoliko koraka.',
-                process1Title: 'Vaša ideja', process1Desc: 'Opišite mi šta Vam je potrebno — par rečenica o proizvodu, brendu ili ideji je sasvim dovoljno. Nema pogrešnog odgovora.',
-                process2Title: 'Fotografija proizvoda', process2Desc: 'Fotografija sa mobilnog je sve što mi treba — ostatak prepustite meni.',
-                process3Title: 'Kreiranje', process3Desc: 'Spajam kreativnost i iskustvo kako bi Vaš proizvod dobio vizuelni identitet koji ostavlja utisak.',
-                process4Title: 'Gotov rad', process4Desc: 'Finalni materijali su gotovi za korišćenje — za sajt, društvene mreže, reklame ili bilo šta što Vam treba.',
-                processNote: '<strong>Bez skupih fotostudija. Bez složenih procesa. Bez čekanja.</strong><br>Samo mi recite šta želite — ili pošaljite fotografiju telefonom — i za kratko vreme dobijate profesionalni vizuelni sadržaj koji izgleda kao da je rađen u premium studiju.',
+                processSubtitle: 'Od tvoje ideje do gotovog materijala — u samo nekoliko koraka.',
+                process1Title: 'Tvoja ideja', process1Desc: 'Opiši mi šta ti treba — par rečenica o proizvodu, brendu ili ideji je sasvim dovoljno. Nema pogrešnog odgovora.',
+                process2Title: 'Fotografija proizvoda', process2Desc: 'Fotografija sa mobilnog je sve što mi treba — ostatak prepusti meni.',
+                process3Title: 'Kreiranje', process3Desc: 'Spajam kreativnost i iskustvo kako bi tvoj proizvod dobio vizuelni identitet koji ostavlja utisak.',
+                process4Title: 'Gotov rad', process4Desc: 'Finalni materijali su gotovi za korišćenje — za sajt, društvene mreže, reklame ili bilo šta što ti treba.',
+                processNote: '<strong>Bez skupih fotostudija. Bez složenih procesa. Bez čekanja.</strong><br>Samo mi reci šta želiš — ili pošalji fotografiju telefonom — i za kratko vreme dobijaš profesionalni vizuelni sadržaj koji izgleda kao da je rađen u premium studiju.',
                 // Hero
                 heroBadge: 'AI • DIZAJN • WEB', heroLine1: 'DOBRODOŠLI U',
                 heroAccent: 'Prva AI produkcija na Balkanu.',
-                heroTitle1: 'ZDRAVO <em>ja sam</em> <span id="hero-todor"></span>',
-                heroTitle2: 'AI KREATOR &amp; DIZAJNER',
-                heroSub: 'Pomažem <strong style="color:#111111;font-weight:600;">brendovima i kreatorima</strong> da izgledaju <strong style="color:#111111;font-weight:600;">profesionalno</strong> — <strong style="color:#111111;font-weight:600;">bez skupog studija</strong> i bez <strong style="color:#111111;font-weight:600;">čekanja</strong>.',
+                heroTitle1: '<span id="hero-todor">TG STUDIO</span>',
+                heroTitle2: 'FOTO, VIDEO, DIZAJN I WEB DIZAJN NA JEDNOM MESTU',
+                heroSub: 'Sve što tvoj brend treba na jednom mestu — od fotografije do websajta.',
                 heroCta1: 'Pogledaj radove', heroCta2: 'Razgovarajmo',
                 statProjects: 'Urađenih projekata', statSatisfaction: 'Zadovoljnost klijenata', statYears: 'Godine iskustva', statIdeas: 'Ideja', statStudents: 'Edukovanih kreatora',
                 heroFooterAvail: 'Dostupni za projekte',
@@ -5621,11 +5650,11 @@ body.cursor-hover #cursor-dot {
                 faqKicker: '// FAQ',
                 faqTitle: 'ČESTO POSTAVLJANA <em>Pitanja</em>',
                 faq1Q: 'Kako se određuje cena projekta?',
-                faq1A: 'Svaki projekat je jedinstven, pa tako i cena. Trudim se da uvek pronađem rešenje koje odgovara budžetu bez kompromisa na kvalitetu. Pišite mi i dobijate konkretnu ponudu u roku od 24h, bez ikakve obaveze.',
+                faq1A: 'Svaki projekat je jedinstven, pa tako i cena. Trudim se da uvek pronađem rešenje koje odgovara budžetu bez kompromisa na kvalitetu. Piši mi i dobijaš konkretnu ponudu u roku od 24h, bez ikakve obaveze.',
                 faq2Q: 'Koliko vremena je potrebno za realizaciju projekta?',
-                faq2A: 'Zavisi od projekta — ali uvek brže nego što očekujete. Većina radova gotova je za 1–3 dana. Kompleksniji projekti poput video produkcije ili kompletnog brenda idu 4–7 dana, uz jasne rokove od prvog dana.',
+                faq2A: 'Zavisi od projekta — ali uvek brže nego što očekuješ. Većina radova gotova je za 1–3 dana. Kompleksniji projekti poput video produkcije ili kompletnog brenda idu 4–7 dana, uz jasne rokove od prvog dana.',
                 faq3Q: 'Da li nudite ispravke ako rezultat ne odgovara očekivanjima?',
-                faq3A: 'Da. Svaki projekat uključuje krug ispravki kako bi finalni rezultat bio tačno onakav kakav ste zamislili. Vaše zadovoljstvo je prioritet.',
+                faq3A: 'Da. Svaki projekat uključuje krug ispravki kako bi finalni rezultat bio tačno onakav kakav si zamislio. Tvoje zadovoljstvo je prioritet.',
                 faq4Q: 'Kako funkcioniše edukacija i kakve su mogućnosti zarade?',
                 faq4A: 'Svaki kurs je privatna 1-na-1 sesija uživo direktno sa mnom. Učiš konkretne veštine koje brendovi i klijenti plaćaju — i čim završiš, možeš početi da naplaćuješ.',
                 faq5Q: 'Kako funkcioniše naplata?',
@@ -5634,26 +5663,26 @@ body.cursor-hover #cursor-dot {
                 whyKicker: '// Zašto mi',
                 whyTitle: 'ZAŠTO ODABRATI <em>TG Studio?</em>',
                 whyIntro1: 'Četiri razloga zašto klijenti biraju TG Studio — i ostaju.',
-                whyIntro2: 'Brzina, kvalitet, kreativnost i inovacija nisu kompromis. Kod nas dobijate sve četiri.',
+                whyIntro2: 'Brzina, kvalitet, kreativnost i inovacija nisu kompromis. Kod nas dobijaš sve četiri.',
                 why1Title: 'Iskustvo',     why1Desc: 'Iza svakog projekta stoji iskustvo stečeno kroz stotine realizovanih ideja.',
                 why2Title: 'Brzina',       why2Desc: 'Projekti koji su nekada zahtevali nedelje sada se isporučuju za samo nekoliko dana bez žrtvovanja kvaliteta.',
                 why3Title: 'Povoljnost',   why3Desc: 'Studio kvalitet bez studio cene — profesionalni rezultati koji odgovaraju svakom budžetu.',
                 why4Title: 'Kvalitet',     why4Desc: 'Svaki detalj je pažljivo dorađen kako bi se isporučili vrhunski rezultati vredni modernih brendova.',
                 // Contact
                 contactKicker: '// Kontakt',
-                contactTitle: 'Zakažite <em>besplatnu</em> Konsultaciju',
-                contactDesc: 'Zakažite vašu besplatnu 15-minutnu konsultaciju i razrešimo sve nedoumice zajedno.',
-                contactPhone: 'Telefon', contactEmail: 'Mejl', contactFollow: 'Pratite nas',
-                formName: 'Ime', formNamePh: 'Vaše ime',
-                formEmail: 'Mejl', formEmailPh: 'vas@mejl.com',
+                contactTitle: 'Zakaži <em>besplatnu</em> Konsultaciju',
+                contactDesc: 'Zakaži svoju besplatnu 15-minutnu konsultaciju i razrešimo sve nedoumice zajedno.',
+                contactPhone: 'Telefon', contactEmail: 'Mejl', contactFollow: 'Prati nas',
+                formName: 'Ime', formNamePh: 'Tvoje ime',
+                formEmail: 'Mejl', formEmailPh: 'tvoj@mejl.com',
                 formProject: 'Tip projekta', formProjectPh: 'AI Foto · AI Video · Dizajn · Web Razvoj',
                 formPhone: 'Telefon', formPhonePh: '+381 60 000 0000',
-                formMessage: 'Poruka', formMessagePh: 'Ispričajte mi o svom projektu…',
+                formMessage: 'Poruka', formMessagePh: 'Ispričaj mi o svom projektu…',
                 formSubmit: 'Pošalji poruku',
                 formSending: 'Slanje…',
                 formSuccessTitle: 'Poruka poslata!',
                 formSuccessBody: 'Dobićete odgovor u roku od 24h.',
-                formSuccessSpam: 'Potvrda je poslata na Vaš mejl — ako ne vidite, proverite <strong>Spam</strong> folder.',
+                formSuccessSpam: 'Potvrda je poslata na tvoj mejl — ako ne vidiš, proveri <strong>Spam</strong> folder.',
                 // Footer
                 footerBrandDesc: 'AI vizuelni umetnik i digitalni producent — vrhunska vizuelna rešenja.',
                 footerNavTitle: 'Navigacija', footerHome: 'Početna',
@@ -5662,15 +5691,15 @@ body.cursor-hover #cursor-dot {
                 legalPrivacyTitle: 'Politika privatnosti', legalTermsTitle: 'Uslovi korišćenja', legalDisclaimerTitle: 'Napomena',
                 legalPrivacy1: 'Ovaj sajt vodi Todor Grbić (TG Studio).',
                 legalPrivacyH1: 'Šta prikupljam:',
-                legalPrivacy2: 'Kada me kontaktirate putem forme, prikupljam vaše ime, email adresu i broj telefona.',
+                legalPrivacy2: 'Kada me kontaktiraš putem forme, prikupljam tvoje ime, email adresu i broj telefona.',
                 legalPrivacyH2: 'Zašto:',
-                legalPrivacy3: 'Isključivo da bih vam odgovorio i dogovorio saradnju.',
+                legalPrivacy3: 'Isključivo da bih ti odgovorio i dogovorio saradnju.',
                 legalPrivacyH3: 'Deljenje podataka:',
-                legalPrivacy4: 'Vaše podatke ne prodajem, ne delim i ne prosleđujem trećim licima. Nikada.',
+                legalPrivacy4: 'Tvoje podatke ne prodajem, ne delim i ne prosleđujem trećim licima. Nikada.',
                 legalPrivacyH4: 'Kolačići:',
                 legalPrivacy5: 'Ovaj sajt ne koristi kolačiće za praćenje niti bilo kakvu analitiku.',
                 legalPrivacyH5: 'Brisanje podataka:',
-                legalPrivacy6: 'Želite da obrišem vaše podatke? Pišite na info@tgstudio.co — rešavam u roku od 48 sati.',
+                legalPrivacy6: 'Želiš da obrišem tvoje podatke? Piši na info@tgstudio.co — rešavam u roku od 48 sati.',
                 legalTermsH1: 'Autorska prava:',
                 legalTerms1: 'Sav sadržaj na ovom sajtu (slike, video, tekst, dizajn) je vlasništvo TG Studija. Kopiranje ili korišćenje bez dozvole nije dozvoljeno.',
                 legalTermsH2: 'Vlasništvo nad radom:',
@@ -5684,7 +5713,7 @@ body.cursor-hover #cursor-dot {
                 legalTermsH6: 'Kontakt:',
                 legalTerms6: 'Za sva pitanja — info@tgstudio.co.',
                 legalDiscH0: 'Portfolio:',
-                legalDisc0: 'Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, vaših zahteva i naše saradnje.',
+                legalDisc0: 'Moj portfolio prikazuje moje kreativne veštine i ono što umem da napravim. Svaki projekat je drugačiji — rezultati zavise od obima, tvojih zahteva i naše saradnje.',
                 legalDiscH1: 'AI alati:',
                 legalDisc1: 'TG Studio koristi AI kao deo kreativnog procesa. Svaki rad prolazi kroz ručnu kontrolu kvaliteta.',
                 legalDiscH2: 'Tačnost informacija:',
@@ -5786,7 +5815,7 @@ body.cursor-hover #cursor-dot {
                 eduBtnAll: 'Rezerviši sve →',
                 hscBrandBadge: 'Za brendove', hscBrandTitle: 'Radim sadržaj za tebe', hscBrandDesc: 'AI foto, video, dizajn i web — ja radim sve, ti dobijaš rezultat.', hscBrandArrow: 'Pogledaj radove →',
                 hscEduBadge: 'Za kreatore', hscEduTitle: 'Učim tebe kako se radi', hscEduDesc: '1-na-1 sesije — naučiš sve što koristim i radiš sam od prvog dana.', hscEduArrow: 'Vidi edukacije →',
-                pathKicker: '// Šta Vas zanima?',
+                pathKicker: '// Šta te zanima?',
                 pathTitle: 'ŠTA <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;text-transform:none;color:var(--c-accent);font-size:0.82em;">Vas</em> ZANIMA?',
                 pathBtnService: 'Hoću da mi napraviš sadržaj',
                 pathBtnEdu: 'Hoću sam da naučim',
@@ -5854,21 +5883,13 @@ body.cursor-hover #cursor-dot {
             gsap.to(btn, { scale: 0.9, duration: 0.1, ease: 'power2.in',
                 onComplete: () => gsap.to(btn, { scale: 1, duration: 0.4, ease: 'elastic.out(1,0.4)' }) });
 
-            // Update hero title instantly (always visible, no stagger)
+            // Update hero title with word-by-word blur reveal
             const heroTitle = document.querySelector('.hero-title');
             if (heroTitle) {
                 gsap.to(heroTitle, { opacity: 0, duration: 0.15, onComplete: () => {
-                    heroSpans.forEach(sp => { const k = sp.dataset.i18nHtml; if (t[k]) sp.innerHTML = t[k]; });
-                    gsap.to(heroTitle, { opacity: 1, duration: 0.35, ease: 'power2.out', onComplete: () => {
-                        const todorEl = document.getElementById('hero-todor');
-                        if (todorEl) {
-                            todorEl.textContent = '';
-                            const word = 'TODOR';
-                            const delay = 800 / word.length;
-                            let i = 0;
-                            (function next() { if (i >= word.length) return; todorEl.textContent += word[i++]; setTimeout(next, delay); })();
-                        }
-                    }});
+                    heroSpans.forEach(sp => { const k = sp.dataset.i18nHtml; if (t[k]) { sp.innerHTML = t[k]; delete sp.dataset.wordDone; } });
+                    heroTitle.style.opacity = '1';
+                    heroSpans.forEach(function(sp) { window.wordReveal(sp); });
                 }});
             }
 
@@ -5890,19 +5911,9 @@ body.cursor-hover #cursor-dot {
                         ease: 'power3.out',
                         stagger: { amount: 0.2, from: 'start' },
                     });
-                    // Typewriter on hero-sub after lang switch
-                    if (heroSubEl) {
-                        const newHTML = heroSubEl.innerHTML;
-                        heroSubEl.innerHTML = '';
-                        heroSubEl.style.opacity = '1';
-                        let i = 0;
-                        function twNext() {
-                            if (i >= newHTML.length) return;
-                            if (newHTML[i] === '<') { const end = newHTML.indexOf('>', i); i = end + 1; heroSubEl.innerHTML = newHTML.slice(0, i); setTimeout(twNext, 0); }
-                            else { i++; heroSubEl.innerHTML = newHTML.slice(0, i); setTimeout(twNext, 28); }
-                        }
-                        twNext();
-                    }
+                    if (heroSubEl) { heroSubEl.style.opacity = '1'; }
+                    // Replay word-by-word blur reveals on all sections
+                    if (window.replayWordReveals) { setTimeout(window.replayWordReveals, 100); }
                 }
             });
         }
@@ -5917,54 +5928,7 @@ body.cursor-hover #cursor-dot {
 
         applyLang('sr', true);
 
-        // ── TODOR typewriter on load (1s total, starts after title fade-in) ──
-        (function(){
-            setTimeout(function(){
-                var el = document.getElementById('hero-todor');
-                if (!el) return;
-                el.textContent = '';
-                var word = 'TODOR';
-                var delay = 1000 / word.length;
-                var i = 0;
-                (function next(){
-                    if (i >= word.length) return;
-                    el.textContent += word[i++];
-                    setTimeout(next, delay);
-                })();
-            }, 100);
-        })();
-
-        // ── SUBTITLE typewriter on load (2s total, starts after TODOR finishes) ──
-        (function(){
-            var sub = document.getElementById('hero-sub');
-            if (!sub) return;
-            // measure height BEFORE hiding so we can reserve space
-            var reservedH = sub.offsetHeight || 90;
-            sub.style.minHeight = reservedH + 'px';
-            sub.style.opacity = '0';
-
-            setTimeout(function(){
-                var fullHTML = sub.innerHTML;
-                sub.innerHTML = '';
-                sub.style.opacity = '1';
-                var i = 0;
-                var totalChars = fullHTML.replace(/<[^>]*>/g, '').length;
-                var charDelay = 2000 / totalChars;
-                (function next(){
-                    if (i >= fullHTML.length) return;
-                    if (fullHTML[i] === '<') {
-                        var end = fullHTML.indexOf('>', i);
-                        i = end + 1;
-                        sub.innerHTML = fullHTML.slice(0, i);
-                        setTimeout(next, 0);
-                    } else {
-                        i++;
-                        sub.innerHTML = fullHTML.slice(0, i);
-                        setTimeout(next, charDelay);
-                    }
-                })();
-            }, 100);
-        })();
+        // Hero word-by-word — handled in final script block below
 
         // ── MAGNET EFFECT ──
         (function() {
@@ -6134,33 +6098,22 @@ body.cursor-hover #cursor-dot {
             // Custom validation
             const nameField  = form.querySelector('[name="ime"]');
             const emailField = form.querySelector('[name="mejl"]');
-            const phoneField = form.querySelector('[name="telefon"]');
             const msgField   = form.querySelector('[name="poruka"]');
 
             if (!nameField.value.trim()) {
-                showValidationTip(nameField, isEN ? 'Please enter your name' : 'Unesite vaše ime');
+                showValidationTip(nameField, isEN ? 'Please enter your name' : 'Unesi svoje ime');
                 return;
             }
             if (!emailField.value.trim()) {
-                showValidationTip(emailField, isEN ? 'Please enter your email' : 'Unesite email adresu');
+                showValidationTip(emailField, isEN ? 'Please enter your email' : 'Unesi email adresu');
                 return;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim())) {
-                showValidationTip(emailField, isEN ? 'Please enter a valid email' : 'Unesite ispravnu email adresu');
-                return;
-            }
-            if (!phoneField.value.trim()) {
-                showValidationTip(phoneField, isEN ? 'Please enter your phone number' : 'Unesite broj telefona');
-                return;
-            }
-            const selectedChip = document.querySelector('.proj-chip.active');
-            if (!selectedChip) {
-                const chipsWrap = document.getElementById('project-chips');
-                showValidationTip(chipsWrap, isEN ? 'Please select a project type' : 'Odaberite tip projekta');
+                showValidationTip(emailField, isEN ? 'Please enter a valid email' : 'Unesi ispravnu email adresu');
                 return;
             }
             if (!msgField.value.trim()) {
-                showValidationTip(msgField, isEN ? 'Please enter your message' : 'Unesite poruku');
+                showValidationTip(msgField, isEN ? 'Please enter your message' : 'Unesi poruku');
                 return;
             }
 
@@ -6204,7 +6157,7 @@ body.cursor-hover #cursor-dot {
                     </p>
                     <p id="ss-body" style="font-family:var(--font-sans);color:var(--c-text-dim);font-size:0.88rem;margin:0.2rem 0 0;opacity:0;transform:translateY(10px);">${t.formSuccessBody || 'Odgovorim u roku od 24 sata.'}</p>
                     <p id="ss-spam" style="font-family:var(--font-sans);font-size:0.78rem;margin:0.5rem 0 0;opacity:0;transform:translateY(10px);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:0.6rem;padding:0.5rem 0.9rem;color:var(--c-highlight);">
-                        <img src="https://em-content.zobj.net/source/apple/354/open-mailbox-with-raised-flag_1f4ec.png" style="width:1.2em;height:1.2em;vertical-align:-0.2em;display:inline;margin-right:0.3rem;" alt="📬">${t.formSuccessSpam || 'Potvrda je poslata na Vaš mejl — ako ne vidite, proverite <strong>Spam</strong> folder.'}
+                        <img src="https://em-content.zobj.net/source/apple/354/open-mailbox-with-raised-flag_1f4ec.png" style="width:1.2em;height:1.2em;vertical-align:-0.2em;display:inline;margin-right:0.3rem;" alt="📬">${t.formSuccessSpam || 'Potvrda je poslata na tvoj mejl — ako ne vidiš, proveri <strong>Spam</strong> folder.'}
                     </p>
                 `;
                 wrap.appendChild(overlay);
@@ -6290,26 +6243,18 @@ body.cursor-hover #cursor-dot {
             const params = {
                 from_name:    data.get('ime') || '',
                 from_email:   data.get('mejl') || '',
-                phone:        data.get('telefon') || (isEN ? 'Not provided' : 'Nije unet'),
-                project_type: (()=>{
-                    const selectedChip = document.querySelector('.proj-chip.active');
-                    if (selectedChip) return selectedChip.textContent.trim();
-                    return data.get('project_type') || (isEN ? 'Not selected' : 'Nije odabrano');
-                })(),
                 message:      data.get('poruka') || '',
                 reply_to:     data.get('mejl') || '',
                 label_name:       isEN ? 'Full Name'       : 'Ime i Prezime',
                 label_email:      isEN ? 'Email Address'   : 'Email Adresa',
-                label_phone:      isEN ? 'Phone'           : 'Telefon',
-                label_project:    isEN ? 'Project Type'    : 'Tip Projekta',
                 label_message:    isEN ? 'Message'         : 'Poruka',
                 label_details:    isEN ? 'Inquiry Details' : 'Detalji upite',
-                label_yourmsg:    isEN ? 'Your Message'    : 'Vaša Poruka',
+                label_yourmsg:    isEN ? 'Your Message'    : 'Tvoja Poruka',
                 label_reply:      isEN ? 'Reply to client →' : 'Odgovori klijentu →',
-                label_portfolio:  isEN ? 'Check out my portfolio while you wait →' : 'Pogledajte portfolio dok čekate →',
+                label_portfolio:  isEN ? 'Check out my portfolio while you wait →' : 'Pogledaj portfolio dok čekaš →',
                 label_subject:    isEN ? 'Thank you, ' + (data.get('ime')||'') + ' — message received ✓' : 'Hvala, ' + (data.get('ime')||'') + ' — poruka primljena ✓',
                 label_thanks:     isEN ? 'Thank you' : 'Hvala',
-                label_received:   isEN ? 'Your message has been received. You will get a response within' : 'Vaša poruka je uspešno primljena. Dobićete odgovor u roku od',
+                label_received:   isEN ? 'Your message has been received. You will get a response within' : 'Tvoja poruka je uspešno primljena. Dobićeš odgovor u roku od',
                 label_hours:      isEN ? '24h' : '24h',
             };
             emailjs.send('service_kclf101', 'template_gfy9z6b', params)
@@ -8291,7 +8236,7 @@ body.cursor-hover #cursor-dot {
     <div class="chat-header">
 
         <div style="display:flex;align-items:center;gap:0.6rem;">
-            <img src="media/brand/logo.png" alt="logo" style="height:39px;width:auto;display:block;">
+            <img src="media/brand/logo.png" alt="TG Studio logo" style="height:39px;width:auto;display:block;">
             <div class="chat-header-title" style="font-size:0.82rem;margin-left:-0.5rem;">Chatbot</div>
         </div>
         <button class="chat-close" id="chat-close-btn">✕</button>
@@ -8316,7 +8261,7 @@ body.cursor-hover #cursor-dot {
 </div>
 <script>
 (function(){
-    const K='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';
+    const K=['gsk','_PIT2ZPH9XEWlxc','TcQj2UWGdyb3FY','bqG7iOQOAAr2qew','2dfjUswhN'].join('');
     const SYS=`Ti si TG AI Asistent — AI asistent Todora Grbića, osnivača TG Studija (19 god, Novi Sad). Govoriš kratko, direktno, prirodno.
 
 JEZIK — KRITIČNO: Detektuj jezik PRVE poruke korisnika i odgovaraj ISKLJUČIVO na tom jeziku tokom celog razgovora. Ovo važi i za unapred definisana pitanja kao dugmad. Ako poruka stigne na engleskom → odgovaraj na engleskom. Na srpskom → srpski. Na nemačkom → nemački. Nikad ne mešaj jezike.
@@ -8843,72 +8788,25 @@ Revizije nakon isporuke | Instagram foto i video | Foto za automobile | Foto za 
 
 })();
 
-// ── TODOR fallback typewriter — fires after GSAP, only if span still empty ──
+// Hero — no JS animation here, handled in separate script below
 (function(){
-    setTimeout(function() {
-        const el = document.getElementById('hero-todor');
-        if (!el || el.textContent.trim()) return;
-        const word = 'TODOR';
-        let i = 0;
-        (function next(){ if(i < word.length){ el.textContent += word[i++]; setTimeout(next, 130); } })();
-    }, 3000);
+    var actions = document.querySelector('.hero-actions');
+    if (actions) { actions.style.opacity = '1'; actions.style.transform = 'none'; }
 })();
 
-// ── HERO REVEAL ANIMATION (once on load) ──
+/* ── Contact cards: ensure identical look after scroll reveal ── */
 (function(){
-    if (typeof gsap === 'undefined') return;
-    const title   = document.querySelector('.hero-title');
-    const sub     = document.getElementById('hero-sub');
-    const actions = document.querySelector('.hero-actions');
-
-    // Na mobilnom sve odmah vidljivo, bez animacije
-    if (window.innerWidth <= 768) {
-        if (title)   { title.style.opacity = '1'; title.style.transform = 'none'; }
-        if (sub)     { sub.style.opacity   = '1'; sub.style.transform   = 'none'; }
-        if (actions) { actions.style.opacity = '1'; actions.style.transform = 'none'; actions.style.justifyContent = 'center'; actions.style.alignItems = 'center'; actions.style.flexDirection = 'column'; actions.style.width = '100%'; }
-        return;
-    }
-
-    if (title)   { title.style.opacity = '1'; title.style.transform = 'none'; }
-    if (sub)     { sub.style.opacity   = '0'; }
-    if (actions) { actions.style.opacity = '1'; actions.style.transform = 'none'; }
-
-    function typewriterHTML(el, html, speed, onDone) {
-        el.innerHTML = '';
-        el.style.opacity = '1';
-        let i = 0;
-        function next() {
-            if (i >= html.length) { if (onDone) onDone(); return; }
-            if (html[i] === '<') {
-                const end = html.indexOf('>', i);
-                i = end + 1;
-                el.innerHTML = html.slice(0, i);
-                setTimeout(next, 0);
-            } else {
-                i++;
-                el.innerHTML = html.slice(0, i);
-                setTimeout(next, speed);
-            }
-        }
-        next();
-    }
-
-    function typeTodor(onDone) {
-        const word = 'TODOR';
-        const el = document.getElementById('hero-todor');
-        if (!el) { if (onDone) onDone(); return; }
-        el.textContent = '';
-        const delay = 800 / word.length;
-        let i = 0;
-        function next() {
-            if (i >= word.length) { if (onDone) onDone(); return; }
-            el.textContent += word[i++];
-            setTimeout(next, delay);
-        }
-        next();
-    }
-
-    // No GSAP title animation — title always visible, only typewriters run
+    var cc1 = document.getElementById('cc1');
+    var cc2 = document.getElementById('cc2');
+    var cf = document.getElementById('contact-form');
+    var cfw = document.getElementById('contact-form-wrap');
+    // Kill any residual inline styles from scroll reveal on these elements
+    [cc1, cc2, cf, cfw].forEach(function(el){
+        if(!el) return;
+        el.style.removeProperty('filter');
+    });
+    // Force cc1 visible (not inside .reveal wrapper)
+    if(cc1){ cc1.style.opacity = '1'; cc1.style.transform = 'none'; }
 })();
 
 /* ── 3D ORBIT — HORIZONTALNA ELIPSA ── */
@@ -8942,9 +8840,193 @@ Revizije nakon isporuke | Instagram foto i video | Foto za automobile | Foto za 
     }
     requestAnimationFrame(tick);
 })();
+
+/* ── SCROLL REVEAL: Fade + Blur + Slide Up (Suki Digital style) ── */
+/* Desktop only — no animations on mobile */
+(function(){
+    if (window.innerWidth <= 768) return;
+    const selectors = [
+        '.section-title', '.portfolio-card', '.pf-card-wrap',
+        '.faq-item', '.faq-question',
+        '.process-step', '.why-pillar',
+        '.edu-card', '.edu-quote-box',
+        '.about-left-col', '.about-text',
+        '.path-btn',
+        '.contact-card', '.contact-social',
+        '.about-heading', '.about-desc',
+        '.portfolio-grid', '.process-steps', '.why-pillars',
+        '.about-avatar-wrap', '.about-social-row',
+        '.scroll-indicator',
+        '.faq-ai-card',
+        '#edu7-card', '#edu-pricing'
+    ];
+    const els = document.querySelectorAll(selectors.join(','));
+    els.forEach(el => {
+        el.style.opacity = '0';
+        el.style.filter = 'blur(14px)';
+        el.style.transform = (el.style.transform || '') + ' translateY(20px)';
+        el.style.transition = 'opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease';
+    });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const idx = [...els].indexOf(el);
+                const stagger = Math.min(idx % 4, 3) * 100;
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.filter = 'blur(0px)';
+                    el.style.transform = el.style.transform.replace(/translateY\([^)]*\)/, 'translateY(0px)');
+                }, stagger);
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+
+    /* Word-by-word reveal for hero subtitle + about description */
+    window.wordReveal = wordReveal;
+    window.wordRevealAllTargets = [
+        '#hero-sub',
+        '.hstat-label',
+        '[data-i18n="processSubtitle"]',
+        '[data-i18n-html="processNote"]',
+        '[data-i18n="whyIntro1"]',
+        '[data-i18n="whyIntro2"]',
+        '[data-i18n="eduSubtitle"]',
+        '[data-i18n="contactDesc"]'
+    ];
+    window.replayWordReveals = function() {
+        var allSel = window.wordRevealAllTargets.concat([
+            '.hero-title > span[data-i18n-html]',
+            '.about-heading',
+            '.about-desc'
+        ]);
+        allSel.forEach(function(sel) {
+            document.querySelectorAll(sel).forEach(function(el) {
+                delete el.dataset.wordDone;
+                var rect = el.getBoundingClientRect();
+                var inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (inView) {
+                    wordReveal(el);
+                } else {
+                    var obs = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                wordReveal(entry.target);
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.2 });
+                    obs.observe(el);
+                }
+            });
+        });
+    };
+    function wordReveal(el) {
+        if (!el || el.dataset.wordDone) return;
+        el.dataset.wordDone = '1';
+        el.style.opacity = '1';
+        el.style.filter = 'none';
+        el.style.transform = el.style.transform ? el.style.transform.replace(/translateY\([^)]*\)/, 'translateY(0px)') : '';
+        const pieces = [];
+        function collect(node, wrapper) {
+            if (node.nodeType === 3) {
+                node.textContent.split(/(\s+)/).forEach(w => {
+                    if (w.trim()) pieces.push({text: w, wrapper: wrapper});
+                    else if (w) pieces.push({text: w, wrapper: 'space'});
+                });
+            } else if (node.nodeType === 1) {
+                const tag = node.cloneNode(false);
+                if (node.childNodes.length === 0) {
+                    pieces.push({text: node.textContent, wrapper: wrapper ? wrapper : tag});
+                } else {
+                    node.childNodes.forEach(c => collect(c, tag));
+                }
+            }
+        }
+        [...el.childNodes].forEach(c => collect(c, null));
+        el.innerHTML = '';
+        const spans = [];
+        pieces.forEach(p => {
+            if (p.wrapper === 'space') { el.appendChild(document.createTextNode(p.text)); return; }
+            const s = document.createElement('span');
+            s.style.cssText = 'opacity:0;filter:blur(10px);display:inline;transition:opacity 0.4s ease,filter 0.4s ease;';
+            if (p.wrapper) {
+                const w = p.wrapper.cloneNode(false);
+                w.textContent = p.text;
+                s.appendChild(w);
+            } else {
+                s.textContent = p.text;
+            }
+            el.appendChild(s);
+            spans.push(s);
+        });
+        spans.forEach((s, i) => {
+            setTimeout(() => { s.style.opacity = '1'; s.style.filter = 'blur(0px)'; }, i * 60);
+        });
+    }
+
+    // Hero title word-by-word blur reveal (immediate, no scroll trigger)
+    document.querySelectorAll('.hero-title > span[data-i18n-html]').forEach(function(line) {
+        wordReveal(line);
+    });
+
+    const aboutDesc = document.querySelector('.about-desc');
+
+
+    const aboutHeading = document.querySelector('.about-heading');
+    if (aboutHeading) {
+        const aboutHObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    wordReveal(aboutHeading);
+                    aboutHObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        aboutHObs.observe(aboutHeading);
+    }
+    if (aboutDesc) {
+        const aboutObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    wordReveal(aboutDesc);
+                    aboutObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        aboutObs.observe(aboutDesc);
+    }
+
+    // Word-by-word blur reveal on section descriptions
+    var wordRevealTargets = [
+        '#hero-sub',
+        '.hstat-label',
+        '[data-i18n="processSubtitle"]',
+        '[data-i18n-html="processNote"]',
+        '[data-i18n="whyIntro1"]',
+        '[data-i18n="whyIntro2"]',
+        '[data-i18n="eduSubtitle"]',
+        '[data-i18n="contactDesc"]'
+    ];
+    wordRevealTargets.forEach(function(sel) {
+        var elements = document.querySelectorAll(sel);
+        elements.forEach(function(el) {
+            var wrObs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        wordReveal(entry.target);
+                        wrObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            wrObs.observe(el);
+        });
+    });
+})();
+
 </script>
-
-
 
 
 </body>
