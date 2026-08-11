@@ -2818,6 +2818,9 @@ body.cursor-hover #cursor-dot {
             display: block;
         }
         #lang-toggle.en .lt-pill {
+            transform: translateX(0);
+        }
+        #lang-toggle:not(.en) .lt-pill {
             transform: translateX(100%);
         }
         .lt-label {
@@ -2831,9 +2834,9 @@ body.cursor-hover #cursor-dot {
             color: rgba(0,0,0,0.38);
             user-select: none;
         }
-        .lt-sr { color: #ffffff; }
-        #lang-toggle.en .lt-sr { color: rgba(0,0,0,0.38); }
-        #lang-toggle.en .lt-en { color: #ffffff; }
+        .lt-en { color: #ffffff; }
+        #lang-toggle:not(.en) .lt-en { color: rgba(0,0,0,0.38); }
+        #lang-toggle:not(.en) .lt-sr { color: #ffffff; }
         .lang-btn { display: none; }
         .lang-divider { display: none; }
 
@@ -2932,8 +2935,8 @@ body.cursor-hover #cursor-dot {
             .cg-nav-btn { top: calc(50% - 24px) !important; }
             /* Lang toggle animation on mobile */
             #lang-toggle .lt-pill { transition: transform 0.38s cubic-bezier(0.34,1.3,0.64,1) !important; }
-            #lang-toggle.en .lt-pill { transform: translateX(100%) !important; }
-            #lang-toggle:not(.en) .lt-pill { transform: translateX(0) !important; }
+            #lang-toggle.en .lt-pill { transform: translateX(0) !important; }
+            #lang-toggle:not(.en) .lt-pill { transform: translateX(100%) !important; }
             /* Video canvas mobile */
             .video-canvas {
                 position: static !important;
@@ -4182,8 +4185,8 @@ body.cursor-hover #cursor-dot {
                 <button id="lang-toggle" data-current="en" aria-label="Switch language">
                     <span class="lt-track">
                         <span class="lt-pill"></span>
-                        <span class="lt-label lt-sr">SR</span>
                         <span class="lt-label lt-en">EN</span>
+                        <span class="lt-label lt-sr">SR</span>
                     </span>
                 </button>
             </div>
