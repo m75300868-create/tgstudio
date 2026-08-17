@@ -4306,6 +4306,9 @@ body.cursor-hover #cursor-dot {
                 <a href="#portfolio" class="btn-main" style="width:360px;white-space:nowrap;text-align:center;justify-content:center;"><span data-i18n="heroCta1">Pogledaj Radove</span></a>
                 <a href="#contact"   class="btn-ghost" style="width:360px;white-space:nowrap;text-align:center;justify-content:center;" data-i18n="heroCta2">Razgovarajmo</a>
             </div>
+            <div style="display:flex;justify-content:center;width:100%;margin-top:0.5rem;pointer-events:auto;">
+                <a href="#services" class="btn-ghost" style="width:360px;white-space:nowrap;text-align:center;justify-content:center;" data-i18n="heroCta3">Usluge</a>
+            </div>
         </div>
 
 
@@ -4333,11 +4336,6 @@ body.cursor-hover #cursor-dot {
             <div class="hstat">
                 <div class="hstat-num"><span class="hstat-count" data-target="400" data-suffix="+">0</span></div>
                 <div class="hstat-label" data-i18n="statProjects">Uradjenih projekata</div>
-            </div>
-            <div class="hstat-divider"></div>
-            <div class="hstat">
-                <div class="hstat-num"><span class="hstat-count" data-target="100" data-suffix="+">0</span></div>
-                <div class="hstat-label" data-i18n="statStudents">Edukovanih kreatora</div>
             </div>
             <div class="hstat-divider"></div>
             <div class="hstat">
@@ -4587,7 +4585,7 @@ body.cursor-hover #cursor-dot {
             flex-direction: column;
             align-items: center;
         }
-        .svc-box:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .svc-box:hover { box-shadow: none; transform: none; }
         .svc-box-title {
             font-family: var(--font-display);
             font-size: 1.25rem;
@@ -4640,9 +4638,8 @@ body.cursor-hover #cursor-dot {
             gap: 1rem;
             width: 100%;
             padding: 0.65rem 0.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .svc-sub-item:last-child { border-bottom: none; }
+
         .svc-sub-name {
             font-family: var(--font-sans);
             font-size: 0.85rem;
@@ -4695,7 +4692,7 @@ body.cursor-hover #cursor-dot {
             align-items: center;
             justify-content: center;
         }
-        .smm-pkg:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .smm-pkg:hover { transform: none; box-shadow: none; }
         .smm-pkg-name {
             font-family: var(--font-display);
             font-size: 0.72rem;
@@ -4895,19 +4892,19 @@ body.cursor-hover #cursor-dot {
             </div>
             <div class="services-grid">
                 <!-- 01 Photo Production -->
-                <div class="svc-box reveal">
+                <div class="svc-box reveal" style="transition-delay:0.05s;">
                     <div class="svc-box-title" data-i18n="svcPhotoTitle">Photo Production</div>
                     <div class="svc-box-desc" data-i18n="svcPhotoDesc">Product photos for your website, Instagram, and ads — without a studio, fast and affordable.</div>
                     <a href="#contact" class="svc-box-cta" data-i18n="svcScheduleCall">Let's Talk</a>
                 </div>
                 <!-- 02 Video Production -->
-                <div class="svc-box reveal">
+                <div class="svc-box reveal" style="transition-delay:0.15s;">
                     <div class="svc-box-title" data-i18n="svcVideoTitle">Video Production</div>
                     <div class="svc-box-desc" data-i18n="svcVideoDesc">Short video spots and reels that grab attention and sell.</div>
                     <a href="#contact" class="svc-box-cta" data-i18n="svcScheduleCall">Let's Talk</a>
                 </div>
                 <!-- 03 Graphic Design -->
-                <div class="svc-box reveal" style="grid-column: 1 / -1;">
+                <div class="svc-box reveal" style="grid-column: 1 / -1; transition-delay:0.25s;">
                     <div class="svc-box-title" data-i18n="svcDesignTitle">Graphic Design</div>
                     <div class="svc-box-desc" data-i18n="svcDesignDesc">Logos, art covers, and thumbnails in your style.</div>
                     <div style="margin-top:0.5rem;width:100%;">
@@ -4929,7 +4926,7 @@ body.cursor-hover #cursor-dot {
                     </div>
                 </div>
                 <!-- 04 Web Development (full width with pricing tiers) -->
-                <div id="web-dev" class="svc-box svc-smm-full reveal" style="grid-column: 1 / -1;">
+                <div id="web-dev" class="svc-box svc-smm-full reveal" style="grid-column: 1 / -1; transition-delay:0.35s;">
                     <div class="svc-box-title" data-i18n="svcWebTitle">Web Development</div>
                     <div class="svc-box-desc" style="max-width:420px;" data-i18n="svcWebDesc">Modern website or online shop — ready to sell.</div>
                     <div class="web-pricing-grid">
@@ -4937,7 +4934,7 @@ body.cursor-hover #cursor-dot {
                             <div class="web-tier-name" data-i18n="svcWebStarter">Starter</div>
                             <div class="web-tier-price">€300</div>
                             <div class="web-tier-desc" data-i18n="svcWebStarterDesc">For small businesses and personal brands that need a clean online presence.</div>
-                            <div class="web-tier-divider"></div>
+
                             <ul class="web-tier-features">
                                 <li data-i18n="svcWebS1">One-page website</li>
                                 <li data-i18n="svcWebS2">Modern responsive design</li>
@@ -4952,7 +4949,7 @@ body.cursor-hover #cursor-dot {
                             <div class="web-tier-name" data-i18n="svcWebPro">Professional</div>
                             <div class="web-tier-price">€500</div>
                             <div class="web-tier-desc" data-i18n="svcWebProDesc">For businesses that need a full website or online shop with everything set up.</div>
-                            <div class="web-tier-divider"></div>
+
                             <ul class="web-tier-features">
                                 <li data-i18n="svcWebP1">Up to 5 pages</li>
                                 <li data-i18n="svcWebP2">E-commerce (up to 20 products)</li>
@@ -4968,7 +4965,7 @@ body.cursor-hover #cursor-dot {
                             <div class="web-tier-name" data-i18n="svcWebEnterprise">Enterprise</div>
                             <div class="web-tier-price" data-i18n="svcWebEnterprisePrice">Custom</div>
                             <div class="web-tier-desc" data-i18n="svcWebEnterpriseDesc">For complex projects that need custom solutions and full flexibility.</div>
-                            <div class="web-tier-divider"></div>
+
                             <ul class="web-tier-features">
                                 <li data-i18n="svcWebE1">Unlimited pages</li>
                                 <li data-i18n="svcWebE2">E-commerce (unlimited products)</li>
@@ -4982,7 +4979,7 @@ body.cursor-hover #cursor-dot {
                     </div>
                 </div>
                 <!-- 05 Social Media Management (full width) -->
-                <div class="svc-box svc-smm-full reveal">
+                <div class="svc-box svc-smm-full reveal" style="transition-delay:0.45s;">
                     <div class="svc-box-title" data-i18n="svcSmmTitle">Social Media Management</div>
                     <div class="svc-box-desc" style="max-width:420px;" data-i18n="svcSmmDesc">Posts, reels, stories — every month, consistently, without you having to think about it.</div>
                     <div class="smm-grid">
@@ -4990,7 +4987,7 @@ body.cursor-hover #cursor-dot {
                             <div class="smm-pkg-name" data-i18n="svcSmmBasic">Basic</div>
                             <div class="smm-pkg-price">€149</div>
                             <div class="smm-pkg-period" data-i18n="svcSmmMonth">/ month</div>
-                            <div class="smm-pkg-divider"></div>
+
                             <ul class="smm-pkg-features">
                                 <li data-i18n="svcSmmB1">12 posts / month</li>
                                 <li data-i18n="svcSmmB2">2 reels / month</li>
@@ -5002,7 +4999,7 @@ body.cursor-hover #cursor-dot {
                             <div class="smm-pkg-name" data-i18n="svcSmmStandard">Standard</div>
                             <div class="smm-pkg-price">€249</div>
                             <div class="smm-pkg-period" data-i18n="svcSmmMonth">/ month</div>
-                            <div class="smm-pkg-divider"></div>
+
                             <ul class="smm-pkg-features">
                                 <li data-i18n="svcSmmS1">20 posts / month</li>
                                 <li data-i18n="svcSmmS2">4 reels / month</li>
@@ -5016,7 +5013,7 @@ body.cursor-hover #cursor-dot {
                             <div class="smm-pkg-name" data-i18n="svcSmmFull">Full</div>
                             <div class="smm-pkg-price">€399</div>
                             <div class="smm-pkg-period" data-i18n="svcSmmMonth">/ month</div>
-                            <div class="smm-pkg-divider"></div>
+
                             <ul class="smm-pkg-features">
                                 <li data-i18n="svcSmmF1">30 posts / month</li>
                                 <li data-i18n="svcSmmF2">8 reels / month</li>
@@ -5068,11 +5065,11 @@ body.cursor-hover #cursor-dot {
                 </div>
                 <div class="faq-item glass" data-faq>
                     <button class="faq-question">
-                        <span class="faq-q-text" data-i18n="faq4Q">Can you create custom AI content for my brand?</span>
+                        <span class="faq-q-text" data-i18n="faq4Q">Koliko brzo mogu da očekujem rast na društvenim mrežama?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner" data-i18n="faq4A">Absolutely. Every project is tailored specifically to your brand identity and goals.</div>
+                        <div class="faq-answer-inner" data-i18n="faq4A">Realni rezultati se vide nakon 1 do 2 meseca konzistentnog rada. Prve promene u engagementu primećujete već posle prve ili druge nedelje.</div>
                     </div>
                 </div>
                 <div class="faq-item glass" data-faq>
@@ -5994,7 +5991,7 @@ body.cursor-hover #cursor-dot {
                 heroTitle1: '<span id="hero-todor">TG STUDIO</span>',
                 heroTitle2: 'PHOTO, VIDEO, DESIGN &amp; WEB DESIGN IN ONE PLACE',
                 heroSub: 'Everything your brand needs in one place — from photography to website.',
-                heroCta1: 'View Portfolio', heroCta2: "Let's Talk",
+                heroCta1: 'View Portfolio', heroCta2: "Let's Talk", heroCta3: 'Services',
                 statProjects: 'Projects completed', statSatisfaction: 'Client satisfaction', statYears: 'Years of experience', statIdeas: 'Ideas', statStudents: 'Educated creators',
                 heroFooterAvail: 'Available for projects',
                 scrollDown: 'Scroll',
@@ -6030,8 +6027,8 @@ body.cursor-hover #cursor-dot {
                 faq2A: 'It depends on the project — but always faster than you expect. Most work is done in 1–3 days. More complex projects like video production or full branding take 4–7 days, with clear deadlines from day one.',
                 faq3Q: 'Do you offer revisions if the result doesn\'t meet expectations?',
                 faq3A: 'Yes. Every project includes a revision round to ensure the final result is exactly what you envisioned. Your satisfaction is the priority.',
-                faq4Q: 'Can you create custom AI content for my brand?',
-                faq4A: 'Absolutely. Every project is tailored specifically to your brand identity and goals. From product photos to video ads — everything is made to match your vision.',
+                faq4Q: 'How fast can I expect growth on social media?',
+                faq4A: 'Real results are visible after 1 to 2 months of consistent work. First changes in engagement are noticeable within the first week or two.',
                 faq5Q: 'How does payment work?',
                 faq5A: 'After a detailed discussion about the project, I require a 50% advance payment before starting work. The remaining 50% is paid upon delivery of the final result that meets the agreed requirements.',
                 // Why
@@ -6245,7 +6242,7 @@ body.cursor-hover #cursor-dot {
                 heroTitle1: '<span id="hero-todor">TG STUDIO</span>',
                 heroTitle2: 'FOTO, VIDEO, DIZAJN I WEB DIZAJN NA JEDNOM MESTU',
                 heroSub: 'Sve što tvoj brend treba na jednom mestu — od fotografije do websajta.',
-                heroCta1: 'Pogledaj radove', heroCta2: 'Razgovarajmo',
+                heroCta1: 'Pogledaj radove', heroCta2: 'Razgovarajmo', heroCta3: 'Usluge',
                 statProjects: 'Urađenih projekata', statSatisfaction: 'Zadovoljnost klijenata', statYears: 'Godine iskustva', statIdeas: 'Ideja', statStudents: 'Edukovanih kreatora',
                 heroFooterAvail: 'Dostupni za projekte',
                 scrollDown: 'Skroluj',
@@ -6281,8 +6278,8 @@ body.cursor-hover #cursor-dot {
                 faq2A: 'Zavisi od projekta — ali uvek brže nego što očekuješ. Većina radova gotova je za 1–3 dana. Kompleksniji projekti poput video produkcije ili kompletnog brenda idu 4–7 dana, uz jasne rokove od prvog dana.',
                 faq3Q: 'Da li nudite ispravke ako rezultat ne odgovara očekivanjima?',
                 faq3A: 'Da. Svaki projekat uključuje krug ispravki kako bi finalni rezultat bio tačno onakav kakav si zamislio. Tvoje zadovoljstvo je prioritet.',
-                faq4Q: 'Da li možete da napravite prilagođen AI sadržaj za moj brend?',
-                faq4A: 'Apsolutno. Svaki projekat je prilagođen specifično vašem brend identitetu i ciljevima. Od product fotki do video reklama — sve je napravljeno da odgovara vašoj viziji.',
+                faq4Q: 'Koliko brzo mogu da očekujem rast na društvenim mrežama?',
+                faq4A: 'Realni rezultati se vide nakon 1 do 2 meseca konzistentnog rada. Prve promene u engagementu primećujete već posle prve ili druge nedelje.',
                 faq5Q: 'Kako funkcioniše naplata?',
                 faq5A: 'Nakon detaljnog dogovora o projektu, tražim avans od 50% pre početka rada. Preostalih 50% se plaća po isporuci finalnog rezultata koji odgovara dogovorenim zahtevima.',
                 // Why
@@ -6642,13 +6639,19 @@ body.cursor-hover #cursor-dot {
             });
         });
 
-        // Scroll reveal — sve odmah vidljivo
-        document.querySelectorAll('.reveal').forEach(function(el) {
-            el.classList.add('visible');
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-            el.style.transition = 'none';
-        });
+        // Scroll reveal — IntersectionObserver
+        (function(){
+            var revealEls = document.querySelectorAll('.reveal');
+            var revObs = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    if(entry.isIntersecting){
+                        entry.target.classList.add('visible');
+                        revObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '-30px' });
+            revealEls.forEach(function(el){ revObs.observe(el); });
+        })();
         document.querySelectorAll('.pf-from-left, .pf-from-right').forEach(function(el) {
             el.classList.add('pf-in');
             el.style.opacity = '1';
@@ -9516,7 +9519,8 @@ Revizije nakon isporuke | Instagram foto i video | Foto za automobile | Foto za 
         '.about-avatar-wrap', '.about-social-row',
         '.scroll-indicator',
         '.faq-ai-card',
-        '#edu7-card', '#edu-pricing'
+        '#edu7-card', '#edu-pricing',
+        '.svc-box', '.svc-box-title', '.smm-pkg', '.web-tier'
     ];
     const els = document.querySelectorAll(selectors.join(','));
     els.forEach(el => {
